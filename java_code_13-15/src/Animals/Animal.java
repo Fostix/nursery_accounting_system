@@ -54,6 +54,10 @@ public abstract class Animal {
         this.commands.addCommand(commands);
     }
 
+    public void removeCommands(Command command) {
+        commands.removeCommand(command);
+    }
+
     @Override
     public String toString() {
         return "Animal{" +

@@ -56,4 +56,18 @@ class PetCommandsTest {
         }
         assertEquals(4, flag);
     }
+    @Test
+    void removeContainCommandTest1() {
+        petCommands.addCommand(Command.GO);
+        petCommands.removeCommand(Command.GO);
+        assertEquals(0, petCommands.getSize());
+    }
+
+    @Test
+    void removeContainCommandTest2() {
+        petCommands.addCommand(Command.GO);
+        petCommands.addCommand(Command.JUMP);
+        petCommands.removeCommand(Command.GO);
+        assertEquals(1, petCommands.getSize());
+    }
 }

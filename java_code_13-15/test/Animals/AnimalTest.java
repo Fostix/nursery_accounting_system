@@ -71,7 +71,6 @@ class AnimalTest {
         assertEquals(Command.GO, animal.getCommandById(0));
     }
 
-    //TODO set several commands
     @Test
     void setAndGetSeveralCommandsTests() {
         animal.addCommand(Command.GO);
@@ -91,4 +90,14 @@ class AnimalTest {
         assertEquals(Command.TRUP, animal.getCommandById(6));
         assertEquals(Command.COME_UP, animal.getCommandById(7));
     }
+
+    //TODO if delete
+    @Test
+    void removeCommandsTests() {
+        animal.addCommand(Command.GO);
+        animal.addCommand(Command.JUMP);
+        animal.addCommand(Command.LIE);
+        assertEquals(Command.GO, animal.getCommandById(0));
+    }
+
 }
