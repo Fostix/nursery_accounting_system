@@ -91,13 +91,20 @@ class AnimalTest {
         assertEquals(Command.COME_UP, animal.getCommandById(7));
     }
 
-    //TODO if delete
+    //TODO if delete, double
     @Test
     void removeCommandsTests() {
         animal.addCommand(Command.GO);
+        animal.removeCommands(Command.GO);
         animal.addCommand(Command.JUMP);
-        animal.addCommand(Command.LIE);
-        assertEquals(Command.GO, animal.getCommandById(0));
+        assertEquals(Command.JUMP, animal.getCommandById(0));
+        boolean flag = false;
+        try {
+            assertEquals(Command.JUMP, animal.getCommandById(1));
+        } catch (IndexOutOfBoundsException e) {
+            flag = true;
+        }
+        assertEquals(true, flag);
     }
 
 }
