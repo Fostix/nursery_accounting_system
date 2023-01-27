@@ -58,6 +58,10 @@ public abstract class Animal {
         commands.removeCommand(command);
     }
 
+    public int getCountCommands() {
+        return commands.getSize();
+    }
+
     @Override
     public String toString() {
         return "Animal{" +
