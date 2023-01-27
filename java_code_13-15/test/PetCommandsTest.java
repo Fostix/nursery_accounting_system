@@ -36,4 +36,24 @@ class PetCommandsTest {
         }
         assertEquals(true, flag);
     }
+
+    @Test
+    void forEachTest() {
+        petCommands.addCommand(Command.GO);
+        petCommands.addCommand(Command.JUMP);
+        petCommands.addCommand(Command.STAND_UP);
+        petCommands.addCommand(Command.LIE);
+        int flag = 0;
+        for (Object c : petCommands) {
+            if (c.equals(Command.GO))
+                flag++;
+            if (c.equals(Command.JUMP))
+                flag++;
+            if (c.equals(Command.STAND_UP))
+                flag++;
+            if (c.equals(Command.LIE))
+                flag++;
+        }
+        assertEquals(4, flag);
+    }
 }
