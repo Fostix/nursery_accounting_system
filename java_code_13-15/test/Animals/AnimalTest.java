@@ -3,6 +3,7 @@ package Animals;
 import Animals.Exceptions.IdLessThanOneException;
 import Animals.Exceptions.IdOutOfException;
 import Animals.Pet.Cat;
+import PetCommands.Enums.Command;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -65,10 +66,8 @@ class AnimalTest {
     }
 
     @Test
-    void getCommands() {
-    }
-
-    @Test
-    void setCommands() {
+    void setAndGetCommandsTests() {
+        animal.addCommand(Command.GO);
+        assertEquals(Command.GO, animal.getCommandById(0));
     }
 }
