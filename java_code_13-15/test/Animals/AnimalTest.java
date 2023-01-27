@@ -53,11 +53,9 @@ class AnimalTest {
     }
 
     @Test
-    void getDateOfBirth() {
-    }
-
-    @Test
-    void setDateOfBirth() {
+    void setAndGetDateOfBirth() {
+        animal.setDateOfBirth("2021-06-11 03:18:43");
+        assertEquals("2021-06-11 03:18:43", animal.getDateOfBirth());
     }
 
     @Test
