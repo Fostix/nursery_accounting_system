@@ -70,4 +70,25 @@ class AnimalTest {
         animal.addCommand(Command.GO);
         assertEquals(Command.GO, animal.getCommandById(0));
     }
+
+    //TODO set several commands
+    @Test
+    void setAndGetSeveralCommandsTests() {
+        animal.addCommand(Command.GO);
+        animal.addCommand(Command.JUMP);
+        animal.addCommand(Command.LIE);
+        animal.addCommand(Command.STAND_UP);
+        animal.addCommand(Command.RUN_AWAY);
+        animal.addCommand(Command.STOP);
+        animal.addCommand(Command.TRUP);
+        animal.addCommand(Command.COME_UP);
+        assertEquals(Command.GO, animal.getCommandById(0));
+        assertEquals(Command.JUMP, animal.getCommandById(1));
+        assertEquals(Command.LIE, animal.getCommandById(2));
+        assertEquals(Command.STAND_UP, animal.getCommandById(3));
+        assertEquals(Command.RUN_AWAY, animal.getCommandById(4));
+        assertEquals(Command.STOP, animal.getCommandById(5));
+        assertEquals(Command.TRUP, animal.getCommandById(6));
+        assertEquals(Command.COME_UP, animal.getCommandById(7));
+    }
 }
