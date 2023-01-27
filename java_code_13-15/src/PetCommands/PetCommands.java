@@ -27,11 +27,8 @@ public class PetCommands<C extends Command> implements Iterable {
         return commands.size();
     }
 
-    @Override
-    public String toString() {
-        return "PetCommands.PetCommands{" +
-                "commands=" + commands +
-                '}';
+    public void removeCommand(Command command) {
+        commands.remove(command);
     }
 
     @Override
@@ -49,5 +46,12 @@ public class PetCommands<C extends Command> implements Iterable {
             }
         };
         return iter;
+    }
+
+    @Override
+    public String toString() {
+        return "PetCommands.PetCommands{" +
+                "commands=" + commands +
+                '}';
     }
 }
