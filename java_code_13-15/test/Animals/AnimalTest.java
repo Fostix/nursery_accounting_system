@@ -118,4 +118,16 @@ class AnimalTest {
         assertEquals(true, flag);
     }
 
+    @Test
+    void getCountCommandTest() {
+        animal.addCommand(Command.GO);
+        animal.addCommand(Command.JUMP);
+        animal.addCommand(Command.LIE);
+        animal.addCommand(Command.STAND_UP);
+        animal.addCommand(Command.RUN_AWAY);
+        animal.addCommand(Command.STOP);
+        animal.addCommand(Command.TRUP);
+        animal.addCommand(Command.COME_UP);
+        assertEquals(8, animal.getCountCommands());
+    }
 }
