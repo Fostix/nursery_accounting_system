@@ -70,4 +70,13 @@ class PetCommandsTest {
         petCommands.removeCommand(Command.GO);
         assertEquals(1, petCommands.getSize());
     }
+
+    @Test
+    void removeEmptyCommandTest2() {
+        petCommands.removeCommand(Command.GO);
+        petCommands.removeCommand(Command.JUMP);
+        petCommands.removeCommand(Command.STAND_UP);
+        petCommands.removeCommand(Command.LIE);
+        assertEquals(0, petCommands.getSize());
+    }
 }
