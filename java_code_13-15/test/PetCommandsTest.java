@@ -1,6 +1,6 @@
-import Animals.Exceptions.AlreadyContainCommand;
 import PetCommands.Enums.Command;
-import PetCommands.PetCommands;
+import Registry.Model.FriendsOfMan.Animals.Exceptions.AlreadyContainCommandException;
+import Registry.Model.FriendsOfMan.PetCommands.PetCommands;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ class PetCommandsTest {
         boolean flag = false;
         try {
             petCommands.addCommand(Command.GO);
-        } catch (AlreadyContainCommand e) {
+        } catch (AlreadyContainCommandException e) {
             flag = true;
         }
         assertEquals(true, flag);
