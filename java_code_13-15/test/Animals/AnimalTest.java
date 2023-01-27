@@ -107,4 +107,12 @@ class AnimalTest {
         assertEquals(true, flag);
     }
 
+    @Test
+    void addTheSameCommandTest() {
+        animal.addCommand(Command.GO);
+        animal.addCommand(Command.GO);
+        animal.addCommand(Command.GO);
+        assertEquals(1, animal.getCountCommands());
+    }
+
 }
