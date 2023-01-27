@@ -1,5 +1,6 @@
 package Animals;
 
+import Animals.Exceptions.AlreadyContainCommand;
 import Animals.Exceptions.IdLessThanOneException;
 import Animals.Exceptions.IdOutOfException;
 import Animals.Pet.Cat;
@@ -110,9 +111,13 @@ class AnimalTest {
     @Test
     void addTheSameCommandTest() {
         animal.addCommand(Command.GO);
-        animal.addCommand(Command.GO);
-        animal.addCommand(Command.GO);
-        assertEquals(1, animal.getCountCommands());
+        boolean flag = false;
+        try {
+            animal.addCommand(Command.GO);
+        } catch (AlreadyContainCommand e) {
+            flag = true;
+        }
+        assertEquals(true, flag);
     }
 
 }
