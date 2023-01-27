@@ -4,8 +4,9 @@ import Animals.Exceptions.AlreadyContainCommand;
 import PetCommands.Enums.Command;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class PetCommands<C extends Command> {
+public class PetCommands<C extends Command> implements Iterable {
     private ArrayList<C> commands;
 
     public PetCommands() {
@@ -31,5 +32,22 @@ public class PetCommands<C extends Command> {
         return "PetCommands.PetCommands{" +
                 "commands=" + commands +
                 '}';
+    }
+
+    @Override
+    public Iterator iterator() {
+        Iterator<Command> iter = new Iterator<Command>() {
+            private int index = 0;
+            @Override
+            public boolean hasNext() {
+                return index < commands.size();
+            }
+
+            @Override
+            public Command next() {
+                return commands.get(index++);
+            }
+        };
+        return iter;
     }
 }
