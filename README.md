@@ -91,3 +91,9 @@ v.sql
 типа счетчик была не в ресурсном try и/или ресурс остался открыт. Значение
 считать в ресурсе try, если при заведении животного заполнены все поля.
 ---
+
+# For connect mysql <br>
+- example code
+![alt text](Screenshot.png "Title")
+- add dependency
+![alt text](Screenshot1.png "Title")
