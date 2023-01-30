@@ -22,6 +22,16 @@ public class Presenter {
 
     public void menu() {
         viewContract.showMenu();
+        String num = "1"; // viewContract.enterData();
+        switch (num) {
+            case "1":
+                ArrayList<Animal> listAnimal = model.getListOfAllPets("dogs");
+                for (Animal animal : listAnimal) {
+                    viewContract.print(Integer.toString(animal.getId()));
+                    viewContract.print(animal.getDateOfBirth());
+                    viewContract.println(animal.getName());
+                }
+        }
     }
 
     public void showAllPets() {

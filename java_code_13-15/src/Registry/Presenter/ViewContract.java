@@ -2,6 +2,8 @@ package Registry.Presenter;
 
 public interface ViewContract {
     void showMenu();
-    void showPets(String data);
+    void print(String data);
+    void println(String date);
+
     String enterData();
 }

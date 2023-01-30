@@ -2,6 +2,8 @@ package Registry.View;
 
 import Registry.Presenter.ViewContract;
 
+import java.util.Scanner;
+
 public class View implements ViewContract {
     @Override
     public void showMenu() {
@@ -14,12 +16,18 @@ public class View implements ViewContract {
     }
 
     @Override
-    public void showPets(String data) {
+    public void print(String data) {
+        System.out.print(data + " ");
+    }
 
+    @Override
+    public void println(String data) {
+        System.out.println(data);
     }
 
     @Override
     public String enterData() {
-        return null;
+        Scanner scanner = new Scanner(System.in);
+        return scanner.next();
     }
 }
