@@ -1,10 +1,6 @@
 <mxfile host="65bd71144e" pages="2">
     <diagram id="rW4Tu4EbM_tbF5WcZ0SO" name="Page-1">
-<<<<<<< HEAD
-        <mxGraphModel dx="1216" dy="773" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
-=======
-        <mxGraphModel dx="1216" dy="767" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
->>>>>>> list
+        <mxGraphModel dx="1980" dy="1143" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -284,11 +280,8 @@
         </mxGraphModel>
     </diagram>
     <diagram id="90USG8wOLYOWAHy-OSG_" name="Page-3">
-<<<<<<< HEAD
-        <mxGraphModel dx="1863" dy="2844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
-=======
         <mxGraphModel dx="1565" dy="2367" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
->>>>>>> list
+        <mxGraphModel dx="3720" dy="3055" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -340,30 +333,18 @@
                 <mxCell id="h15reLzV8wNA17_HTdgR-4" value="+ showMenu(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;fontColor=default;html=1;" parent="h15reLzV8wNA17_HTdgR-1" vertex="1">
                     <mxGeometry y="60" width="160" height="26" as="geometry"/>
                 </mxCell>
-<<<<<<< HEAD
-                <mxCell id="h15reLzV8wNA17_HTdgR-5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IViewContract&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ showMenu(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ showListOfPets(String): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ setDateOfBirthOnNewPet(): String&lt;br&gt;+ setNameNewPet(): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;labelBackgroundColor=none;fontColor=default;" parent="1" vertex="1">
-                    <mxGeometry x="610" y="20" width="270" height="140" as="geometry"/>
-                </mxCell>
-                <mxCell id="h15reLzV8wNA17_HTdgR-6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IModel&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getListOfPets(): void&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ addNewPet(): void&lt;br&gt;+ method2(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;labelBackgroundColor=none;fontColor=default;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="20" width="190" height="140" as="geometry"/>
-=======
                 <mxCell id="h15reLzV8wNA17_HTdgR-5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IViewContract&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ showMenu(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ showPets(String): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ enterData(): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;labelBackgroundColor=none;fontColor=default;" parent="1" vertex="1">
                     <mxGeometry x="860" y="210" width="270" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="h15reLzV8wNA17_HTdgR-6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IModel&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&amp;nbsp;+ getListOfAllPets(): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;&amp;nbsp;+ getPetById(int): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;&amp;nbsp;+ getPetByDateOfBirth(String): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;&amp;nbsp;+ getPetByName(String): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;&amp;nbsp;+ addNewPet(): void" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;labelBackgroundColor=none;fontColor=default;" parent="1" vertex="1">
                     <mxGeometry x="-230" y="173" width="320" height="170" as="geometry"/>
->>>>>>> list
                 </mxCell>
                 <mxCell id="6oOjXGptcrvzWEzDZb1e-1" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="h15reLzV8wNA17_HTdgR-1" target="h15reLzV8wNA17_HTdgR-5" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
                         <mxPoint x="340" y="190" as="sourcePoint"/>
                         <mxPoint x="500" y="190" as="targetPoint"/>
                         <Array as="points">
-<<<<<<< HEAD
-                            <mxPoint x="745" y="350"/>
-=======
                             <mxPoint x="995" y="490"/>
->>>>>>> list
                         </Array>
                     </mxGeometry>
                 </mxCell>
@@ -383,28 +364,13 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="6oOjXGptcrvzWEzDZb1e-4" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cfolplHtps70wQtS1Zro-2" target="h15reLzV8wNA17_HTdgR-6" edge="1">
-<<<<<<< HEAD
-                    <mxGeometry x="0.1803" y="-20" relative="1" as="geometry">
-                        <mxPoint x="340" y="50" as="sourcePoint"/>
-                        <mxPoint x="500" y="50" as="targetPoint"/>
-=======
                     <mxGeometry x="-0.5034" y="20" relative="1" as="geometry">
                         <mxPoint x="340" y="190" as="sourcePoint"/>
                         <mxPoint x="500" y="190" as="targetPoint"/>
->>>>>>> list
                         <Array as="points">
-                            <mxPoint x="280" y="208"/>
-                            <mxPoint x="280" y="258"/>
+                            <mxPoint x="220" y="208"/>
+                            <mxPoint x="220" y="258"/>
                         </Array>
-<<<<<<< HEAD
-                        <mxPoint x="20" y="20" as="offset"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="9brq2_N2xXxs9rocdczO-1" value="Pets&amp;lt;A&amp;gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;labelBackgroundColor=none;fontColor=default;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="-240" width="280" height="160" as="geometry"/>
-                </mxCell>
-                <mxCell id="9brq2_N2xXxs9rocdczO-2" value="- pets: ArrayList" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;fontColor=default;html=1;" parent="9brq2_N2xXxs9rocdczO-1" vertex="1">
-=======
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
@@ -412,17 +378,12 @@
                     <mxGeometry x="600" y="-100" width="280" height="160" as="geometry"/>
                 </mxCell>
                 <mxCell id="9brq2_N2xXxs9rocdczO-2" value="- pets: ArrayList&amp;lt;Animal&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;fontColor=default;html=1;" parent="9brq2_N2xXxs9rocdczO-1" vertex="1">
->>>>>>> list
                     <mxGeometry y="26" width="280" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="9brq2_N2xXxs9rocdczO-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;labelBackgroundColor=none;fontColor=default;html=1;" parent="9brq2_N2xXxs9rocdczO-1" vertex="1">
                     <mxGeometry y="52" width="280" height="8" as="geometry"/>
                 </mxCell>
-<<<<<<< HEAD
-                <mxCell id="9brq2_N2xXxs9rocdczO-4" value="+ getAllListOfPets(): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;+ getPetById(int): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;+ getPetByDateOfBirth(String): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;+ getPetByName(String): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;+ addNewPet(String): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;fontColor=default;html=1;" parent="9brq2_N2xXxs9rocdczO-1" vertex="1">
-=======
                 <mxCell id="9brq2_N2xXxs9rocdczO-4" value="+ Pets(): void&lt;br&gt;+ getListOfAllPets(): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;+ getPetById(int): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;+ getPetByDateOfBirth(String): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;+ getPetByName(String): ArrayList&amp;lt;Animal&amp;gt;&lt;br&gt;+ addNewPet(String): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;fontColor=default;html=1;" parent="9brq2_N2xXxs9rocdczO-1" vertex="1">
->>>>>>> list
                     <mxGeometry y="60" width="280" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="aJxkpa-kqfiAPnuDxRBT-38" value="&lt;&lt;Abstract&gt;&gt;&#10;Pet" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=16;" parent="1" vertex="1">
