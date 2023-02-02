@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public interface IModel {
     ArrayList<Animal> getListOfAllPets(String pet);
-    ArrayList<Animal> getPetById();
-    ArrayList<Animal> getPetByDataOfBirth();
+    Animal getPetById(String table, int id);
+    ArrayList<Animal> getPetByDataOfBirth(String table, String dateOfBirth);
     ArrayList<Animal> getPetByName();
-    ArrayList<Animal> addNewPet();
+    void addNewPet(String table, int type, String dateOfBirth, String name);
 }
