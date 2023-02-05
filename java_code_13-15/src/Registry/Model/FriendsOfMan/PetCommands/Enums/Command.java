@@ -1,4 +1,4 @@
-package PetCommands.Enums;
+package Registry.Model.FriendsOfMan.PetCommands.Enums;
 
 public enum Command {
     GO,

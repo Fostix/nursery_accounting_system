@@ -1,14 +1,17 @@
 package Registry.Presenter;
 
 import Registry.Model.FriendsOfMan.Animals.Animal;
+import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Presenter {
     private ViewContract viewContract;
     private final IModel model;
     private ArrayList<Animal> tempPets;
     private static String[] animalType;
+    private Animal animal;
 
     public Presenter(IModel model) {
         this.model = model;
@@ -25,13 +28,14 @@ public class Presenter {
     public void menu() {
         viewContract.showMenu();
         // viewContract.enterData();
-        String num = "3";
+        String num = "1";
         switch (num) {
             case "1":
                 showAllPets();
                 break;
             case "2":
                 searchPetById();
+                teachANewPetCommand();
                 break;
             case "3":
                 searchPetByDateOfBirth();
@@ -48,14 +52,14 @@ public class Presenter {
     public void showAllPets() {
         viewContract.println("pets");
         for (int i = 0; i < animalType.length; i++) {
-            ArrayList<Animal> listAnimal = model.getListOfAllPets(animalType[i]);
-            if (i == 3) // after 3 show pack animals
+            Map<Animal, ArrayList<Command>> listAnimal = model.getListOfAllPets(animalType[i]);
+            if (i == 2) // after 3 show pack animals
                 viewContract.println("pack animals");
-            for (Animal animal : listAnimal) {
-                viewContract.print(Integer.toString(animal.getId()));
-                viewContract.print(animal.getDateOfBirth());
-                viewContract.println(animal.getName());
-            }
+//            for (Animal animal : listAnimal) {
+//                viewContract.print(Integer.toString(animal.getId()));
+//                viewContract.print(animal.getDateOfBirth());
+//                viewContract.println(animal.getName());
+//            }
         }
     }
 
@@ -80,6 +84,10 @@ public class Presenter {
         for (String at : animalType) {
             model.getPetByDataOfBirth(at, data);
         }
+    }
+
+    public void showPetCommands() {
+        //model.showPetCommands();
     }
 
     public void searchPetByName() {

@@ -1,5 +1,5 @@
-import PetCommands.Enums.Command;
 import Registry.Model.FriendsOfMan.Animals.Exceptions.AlreadyContainCommandException;
+import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
 import Registry.Model.FriendsOfMan.PetCommands.PetCommands;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

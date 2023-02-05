@@ -1,21 +1,20 @@
 package Registry.Model.FriendsOfMan.Animals;
 
-import PetCommands.Enums.Command;
 import Registry.Model.FriendsOfMan.Animals.Exceptions.IdLessThanOneException;
 import Registry.Model.FriendsOfMan.Animals.Exceptions.IdOutOfException;
+import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
 import Registry.Model.FriendsOfMan.PetCommands.PetCommands;
 
 public abstract class Animal {
     private int id;
     private String dateOfBirth;
     private String name;
-    private PetCommands<Command> commands;
+    private PetCommands<Command> commands = new PetCommands<Command>();
 
     public Animal(int id, String dateOfBirth, String name) {
         setId(id);
         this.dateOfBirth = dateOfBirth;
         this.name = name;
-        this.commands = new PetCommands<>();
     }
 
     public int getId() {
