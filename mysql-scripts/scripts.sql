@@ -70,6 +70,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`hamsters` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`hamsters` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `id_command` INT,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -90,6 +91,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`cats` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`cats` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `id_command` INT,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -110,6 +112,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`dogs` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`dogs` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `id_command` INT,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -130,6 +133,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`horses` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`horses` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `id_command` INT,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -150,6 +154,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`camels` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`camels` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `id_command` INT,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -170,6 +175,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`donkeys` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`donkeys` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `id_command` INT,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -183,9 +189,9 @@ CREATE TABLE IF NOT EXISTS `friends_of_man`.`donkeys` (
     REFERENCES `friends_of_man`.`animal_type` (`id`));
 
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+-- SET SQL_MODE=@OLD_SQL_MODE;
+-- SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+-- SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- 9. Заполнить низкоуровневые таблицы именами(животных), командами
 -- которые они выполняют и датами рождения:
@@ -207,10 +213,9 @@ VALUES
 
 -- feel cats:
 -- 1:
-
-INSERT INTO cats (id_animal_type, date_of_birth, name)
+INSERT INTO cats (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2013-09-25 14:26:22', 'Axel');
+(1, 1, '2013-09-25 14:26:22', 'Axel');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -241,17 +246,17 @@ VALUE
 (1, 8);
 
 -- 2:
-INSERT INTO cats (id_animal_type, date_of_birth, name)
+INSERT INTO cats (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2021-03-06 12:19:19', 'Sasha');
+(2, 1, '2021-03-06 12:19:19', 'Sasha');
 
 
 
 -- 3:
 
-INSERT INTO cats (id_animal_type, date_of_birth, name)
+INSERT INTO cats (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2017-03-08 23:58:56', 'Hardy');
+(3, 1, '2017-03-08 23:58:56', 'Hardy');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -283,9 +288,9 @@ VALUE
 
 -- 4:
 
-INSERT INTO cats (id_animal_type, date_of_birth, name)
+INSERT INTO cats (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2021-03-06 22:33:03', 'Sox');
+(4, 1, '2021-03-06 22:33:03', 'Sox');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -310,9 +315,9 @@ VALUE
 -- feel dogs:
 -- 5:
 
-INSERT INTO dogs (id_animal_type, date_of_birth, name)
+INSERT INTO dogs (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2012-12-12 15:46:56', 'Lucky');
+(5, 1, '2012-12-12 15:46:56', 'Lucky');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -331,9 +336,9 @@ VALUE
 (5, 4);
 
 -- 6:
-INSERT INTO dogs (id_animal_type, date_of_birth, name)
+INSERT INTO dogs (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2021-10-14 17:59:00', 'Jazmie');
+(6, 1, '2021-10-14 17:59:00', 'Jazmie');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -352,13 +357,9 @@ VALUE
 (6, 4);
 
 -- 7:
-INSERT INTO dogs (id_animal_type, date_of_birth, name)
+INSERT INTO dogs (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2016-10-24 07:01:05', 'Poochie');
-
-INSERT INTO dogs (id_animal_type, date_of_birth, name)
-VALUE
-(1, '2016-10-24 07:01:05', 'Poochie');
+(7, 1, '2016-10-24 07:01:05', 'Poochie');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -391,40 +392,40 @@ VALUE
 -- feels hamsters:
 -- 8:
 
-INSERT INTO hamsters (id_animal_type, date_of_birth, name)
+INSERT INTO hamsters (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2021-01-17 20:09:44', 'Skye');
+(8, 1, '2021-01-17 20:09:44', 'Skye');
 
 -- 9:
 
-INSERT INTO hamsters (id_animal_type, date_of_birth, name)
+INSERT INTO hamsters (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2018-10-07 13:50:04', 'Bo');
+(9, 1, '2018-10-07 13:50:04', 'Bo');
 
 -- 10:
 
-INSERT INTO hamsters (id_animal_type, date_of_birth, name)
+INSERT INTO hamsters (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2020-04-09 15:18:47', 'Waldo');
+(10, 1, '2020-04-09 15:18:47', 'Waldo');
 
 -- 11:
 
-INSERT INTO hamsters (id_animal_type, date_of_birth, name)
+INSERT INTO hamsters (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2022-10-20 08:23:44', 'Ivy');
+(11, 1, '2022-10-20 08:23:44', 'Ivy');
 
 -- 12:
 
-INSERT INTO hamsters (id_animal_type, date_of_birth, name)
+INSERT INTO hamsters (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(1, '2020-7-29 19:45:42', 'Bj');
+(12, 1, '2020-7-29 19:45:42', 'Bj');
 
 -- feel horses:
 -- 13:
 
-INSERT INTO horses (id_animal_type, date_of_birth, name)
+INSERT INTO horses (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(2, '2015-03-11 04:25:01', 'Benji');
+(13, 2, '2015-03-11 04:25:01', 'Benji');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -440,9 +441,9 @@ VALUE
 
 -- 14:
 
-INSERT INTO horses (id_animal_type, date_of_birth, name)
+INSERT INTO horses (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(2, '2017-07-26 07:49:22', 'Higgins');
+(14, 2, '2017-07-26 07:49:22', 'Higgins');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -470,9 +471,9 @@ VALUE
 
 -- 15:
 
-INSERT INTO horses (id_animal_type, date_of_birth, name)
+INSERT INTO horses (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(2, '2013-07-11 18:42:37', 'Mitch');
+(15, 2, '2013-07-11 18:42:37', 'Mitch');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -505,9 +506,9 @@ VALUE
 -- feel camels:
 -- 16:
 
-INSERT INTO horses (id_animal_type, date_of_birth, name)
+INSERT INTO horses (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(2, '2021-01-05 05:46:02', 'Molly');
+(16, 2, '2021-01-05 05:46:02', 'Molly');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -531,9 +532,9 @@ VALUE
 
 -- 17:
 
-INSERT INTO horses (id_animal_type, date_of_birth, name)
+INSERT INTO horses (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(2, '2019-09-20 12:11:13', 'Jelly');
+(17, 2, '2019-09-20 12:11:13', 'Jelly');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -557,9 +558,9 @@ VALUE
 
 -- 18:
 
-INSERT INTO horses (id_animal_type, date_of_birth, name)
+INSERT INTO horses (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(2, '2017-06-11 03:18:43', 'Budda');
+(18, 2, '2017-06-11 03:18:43', 'Budda');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -584,9 +585,9 @@ VALUE
 -- feel donkeys:
 -- 19:
 
-INSERT INTO donkeys (id_animal_type, date_of_birth, name)
+INSERT INTO donkeys (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(2, '2016-12-29 03:20:48', 'Klaus');
+(19, 2, '2016-12-29 03:20:48', 'Klaus');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -598,9 +599,9 @@ VALUE
 
 -- 20:
 
-INSERT INTO donkeys (id_animal_type, date_of_birth, name)
+INSERT INTO donkeys (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(2, '2021-06-11 03:18:43', 'Kosmo');
+(20, 2, '2021-06-11 03:18:43', 'Kosmo');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -612,9 +613,9 @@ VALUE
 
 -- 21:
 
-INSERT INTO donkeys (id_animal_type, date_of_birth, name)
+INSERT INTO donkeys (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(2, '2017-04-04 05:43:55', 'Yogi');
+(21, 2, '2017-04-04 05:43:55', 'Yogi');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -625,9 +626,9 @@ VALUE
 (21, 2);
 -- 22:
 
-INSERT INTO donkeys (id_animal_type, date_of_birth, name)
+INSERT INTO donkeys (id_command, id_animal_type, date_of_birth, name)
 VALUE
-(2, '2021-10-15 14:38:02', 'Tyler');
+(22, 2, '2021-10-15 14:38:02', 'Tyler');
 
 INSERT INTO pet_knows_commands (id_pet, id_commands)
 VALUE
@@ -916,7 +917,9 @@ WHERE hamsters.id IS NULL AND dogs.id IS NULL AND cats.id IS NULL AND donkeys.id
 
 
 
-
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 

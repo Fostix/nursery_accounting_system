@@ -1,7 +1,7 @@
 package Registry.Model.FriendsOfMan.PetCommands;
 
-import PetCommands.Enums.Command;
 import Registry.Model.FriendsOfMan.Animals.Exceptions.AlreadyContainCommandException;
+import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
 
 import java.util.ArrayList;
 import java.util.Iterator;
