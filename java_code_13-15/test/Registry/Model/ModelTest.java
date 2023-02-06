@@ -5,6 +5,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ModelTest {
@@ -23,8 +25,12 @@ class ModelTest {
     @Test
     void getListOfAllPets() {
         model = new Model();
-        System.out.println(model.getListOfAllPets("dogs"));
-        assertEquals(" ", model.getListOfAllPets("dogs"));
+        try {
+            System.out.println(model.getListOfAllPets("dogs"));
+            assertEquals(" ", model.getListOfAllPets("dogs"));
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
@@ -34,8 +40,12 @@ class ModelTest {
     @Test
     void getPetById() {
         model = new Model();
-        System.out.println(model.getPetById("dogs", 1));
-        assertEquals(new Dog(1, "2012-12-12 15:46:56", "Lucky"), model.getPetById("dogs", 1));
+        try {
+            System.out.println(model.getPetById("dogs", 1));
+            assertEquals(new Dog(1, "2012-12-12 15:46:56", "Lucky"), model.getPetById("dogs", 1));
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
@@ -48,7 +58,11 @@ class ModelTest {
 
     @Test
     void addNewPet() {
-        model.addNewPet("dogs", 1, "2015-10-19 07:01:05", "Bahruma");
+        try {
+            model.addNewPet("dogs", 1, "2015-10-19 07:01:05", "Bahruma");
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         //assertEquals();
     }
 }

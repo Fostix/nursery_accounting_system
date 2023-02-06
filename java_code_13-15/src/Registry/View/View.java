@@ -26,6 +26,11 @@ public class View implements ViewContract {
     }
 
     @Override
+    public void printlnEr(String data) {
+        System.err.println(data);
+    }
+
+    @Override
     public String enterData() {
         Scanner scanner = new Scanner(System.in);
         return scanner.next();

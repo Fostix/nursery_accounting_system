@@ -52,8 +52,8 @@ public abstract class Animal {
         return commands;
     }
 
-    public void addCommand(Command commands) {
-        this.commands.addCommand(commands);
+    public void addCommand(Command command) {
+        this.commands.addCommand(command);
     }
 
     public void removeCommands(Command command) {

@@ -1,9 +1,9 @@
 package Registry.Model.FriendsOfMan.Animals;
 
-import PetCommands.Enums.Command;
 import Registry.Model.FriendsOfMan.Animals.Exceptions.AlreadyContainCommandException;
 import Registry.Model.FriendsOfMan.Animals.Exceptions.IdLessThanOneException;
 import Registry.Model.FriendsOfMan.Animals.Pet.Cat;
+import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
