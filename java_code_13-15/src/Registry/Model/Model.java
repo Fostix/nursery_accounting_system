@@ -6,8 +6,6 @@ import Registry.Presenter.IModel;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Model implements IModel {
     private Connection connection;

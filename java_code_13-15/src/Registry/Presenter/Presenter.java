@@ -27,13 +27,15 @@ public class Presenter {
 
     public void menu() {
         viewContract.showMenu();
-        // viewContract.enterData();
-        String num = "1";
+        String num = "2"; //viewContract.enterData();
         switch (num) {
             case "1":
                 showAllPets();
                 break;
             case "2":
+                showAllPetsInTable();
+                break;
+            case "2.5":
                 searchPetById();
                 teachANewPetCommand();
                 break;
@@ -68,6 +70,21 @@ public class Presenter {
                 viewContract.println("pack animals");
         }
     }
+
+    public void showAllPetsInTable() {
+        viewContract.print("Enter table name:");
+        String table = viewContract.enterData();
+        for (Animal a : model.getListOfAllPets(table)) {
+            viewContract.print(String.valueOf(a.getId()));
+            viewContract.print(a.getName());
+            viewContract.print(a.getDateOfBirth());
+            for (int j = 0; j < a.getListOfCommands().getSize(); j++) {
+                viewContract.print(a.getCommandById(j).toString() + ",");
+            }
+            viewContract.println("");
+        }
+    }
+
 
     public void searchPetById() {
         viewContract.print("enter pet table: ");
