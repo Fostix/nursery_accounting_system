@@ -52,9 +52,11 @@ public class Presenter {
     public void showAllPets() {
         viewContract.println("pets");
         for (int i = 0; i < animalType.length; i++) {
-            Map<Animal, ArrayList<Command>> listAnimal = model.getListOfAllPets(animalType[i]);
+            System.out.println(model.getListOfAllPets(animalType[i]));
             if (i == 2) // after 3 show pack animals
                 viewContract.println("pack animals");
+            //System.out.println(listAnimal.size());
+            //System.out.println(listAnimal.values());
 //            for (Animal animal : listAnimal) {
 //                viewContract.print(Integer.toString(animal.getId()));
 //                viewContract.print(animal.getDateOfBirth());

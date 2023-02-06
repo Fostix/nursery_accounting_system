@@ -22,12 +22,15 @@ public class Model implements IModel {
     }
 
     @Override
-    public Map<Animal, ArrayList<Command>> getListOfAllPets(String table) {
-//        resultSet = statement.executeQuery(
-//                "SELECT p.id, t.type, p.date_of_birth, p.name FROM " + table + " p INNER JOIN animal_type t ON p.id_animal_type = t.id;");
+    public ArrayList<Animal> getListOfAllPets(String table) {
         connect();
         forCommandConnect();
-        Map<Animal, ArrayList<Command>> animals = new HashMap<>();
+        AnimalAndCommand animalAndCommand;
+       // ArrayList<AnimalAndCommand> animals = new ArrayList<>();
+        ArrayList<Animal> animals = new ArrayList<>();
+        //Map<Animal, ArrayList<Command>> animals = new HashMap<>();
+//        ArrayAnimals<Animal, ArrayList<Command>> animalss = new ArrayAnimals<>();
+//        Map<Animal, ArrayList<Command>> animalss = new <>();
         int id = 0;
         int idCommand = 0;
         String dateOfBirth = null;
@@ -35,8 +38,8 @@ public class Model implements IModel {
         String command = null;
         Command enumCom = null;
         Creator creator = Creator.getInstance();
-        //ArrayList<Animal> animals = new ArrayList<>();
-        ArrayList<Command> commands;
+        ArrayList<Command> commands = null;
+        Animal animal;
         boolean flag = true;
         try {
             resultSet = statement.executeQuery(
@@ -47,7 +50,7 @@ public class Model implements IModel {
                 idCommand = resultSet.getInt("id_command");
                 dateOfBirth = resultSet.getString("date_of_birth").trim();
                 name = resultSet.getString("name").trim();
-                creator.createASpecificAnimal(table, id, dateOfBirth, name);
+                animal = creator.createASpecificAnimal(table, id, dateOfBirth, name);
                 commands = new ArrayList<>();
                 forCommandResultSet = forCommandStatement.executeQuery(
                         "SELECT co.command\n" +
@@ -58,11 +61,14 @@ public class Model implements IModel {
                 );
                 while (forCommandResultSet.next()) {
                     command = forCommandResultSet.getString("command");
-                    if (command != null)
+                    if (command != null) {
                         enumCom = Command.valueOf(command);
-                    commands.add(enumCom);
+                        animal.addCommand(enumCom);
+                    }
                 }
-                animals.put(creator.createASpecificAnimal(table, id, dateOfBirth, name), commands);
+                animals.add(animal);
+//                animals.add(creator.createASpecificAnimal(table, id, dateOfBirth, name), commands);
+//                animals.put(creator.createASpecificAnimal(table, id, dateOfBirth, name), commands);
             }
             resultSet.close();
             statement.close();
@@ -73,7 +79,6 @@ public class Model implements IModel {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(animals);
         return animals;
     }
 
