@@ -645,6 +645,7 @@ DROP TABLE camels;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`horses_and_donkeys` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `id_command` INT,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -657,10 +658,10 @@ CREATE TABLE IF NOT EXISTS `friends_of_man`.`horses_and_donkeys` (
     FOREIGN KEY (`id_animal_type`)
     REFERENCES `friends_of_man`.`animal_type` (`id`));
 
-INSERT INTO horses_and_donkeys (id_animal_type, date_of_birth, name)
-  SELECT id_animal_type, date_of_birth, name FROM horses
+INSERT INTO horses_and_donkeys (id_command, id_animal_type, date_of_birth, name)
+  SELECT id_command, id_animal_type, date_of_birth, name FROM horses
    UNION
-  SELECT id_animal_type, date_of_birth, name FROM donkeys;
+  SELECT id_command, id_animal_type, date_of_birth, name FROM donkeys;
 
 -- 11. Создать новую таблицу “молодые животные” в которую попадут все
 -- животные старше 1 года, но младше 3 лет и в отдельном столбце с точностью
@@ -668,6 +669,7 @@ INSERT INTO horses_and_donkeys (id_animal_type, date_of_birth, name)
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`young_animals` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `id_command` INT,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -681,23 +683,23 @@ CREATE TABLE IF NOT EXISTS `friends_of_man`.`young_animals` (
     FOREIGN KEY (`id_animal_type`)
     REFERENCES `friends_of_man`.`animal_type` (`id`));
     
-INSERT INTO young_animals (id_animal_type, date_of_birth, name, age)
-  SELECT c.id_animal_type, c.date_of_birth, c.name, TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE()) AS age
+INSERT INTO young_animals (id_command, id_animal_type, date_of_birth, name, age)
+  SELECT c.id_command, c.id_animal_type, c.date_of_birth, c.name, TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE()) AS age
   FROM cats c
   WHERE (NOW() - INTERVAL 1 YEAR) > date_of_birth 
   AND (NOW() - INTERVAL 3 YEAR) < date_of_birth
   UNION
-  SELECT d.id_animal_type, d.date_of_birth, d.name, TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE()) AS age
+  SELECT d.id_command, d.id_animal_type, d.date_of_birth, d.name, TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE()) AS age
   FROM dogs d
   WHERE (NOW() - INTERVAL 1 YEAR) > date_of_birth 
   AND (NOW() - INTERVAL 3 YEAR) < date_of_birth
   UNION
-  SELECT h.id_animal_type, h.date_of_birth, h.name, TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE()) AS age
+  SELECT h.id_command, h.id_animal_type, h.date_of_birth, h.name, TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE()) AS age
   FROM hamsters h
   WHERE (NOW() - INTERVAL 1 YEAR) > date_of_birth 
   AND (NOW() - INTERVAL 3 YEAR) < date_of_birth
   UNION
-  SELECT had.id_animal_type, had.date_of_birth, had.name, TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE()) AS age
+  SELECT had.id_command, had.id_animal_type, had.date_of_birth, had.name, TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE()) AS age
   FROM horses_and_donkeys had
   WHERE (NOW() - INTERVAL 1 YEAR) > date_of_birth 
   AND (NOW() - INTERVAL 3 YEAR) < date_of_birth;
@@ -715,7 +717,7 @@ animal_type.id AS id_from_animal_type, animal_type.type AS type_from_animal_type
 horses_and_donkeys.id AS id_from_horses_and_donkeys, horses_and_donkeys.id_animal_type AS id_animal_type_from_horses_and_donkeys, horses_and_donkeys.date_of_birth AS date_of_birth_from_horses_and_donkeys, horses_and_donkeys.name AS name_from_horses_and_donkeys,
 pet_commands.id AS id_from_pet_commands, pet_commands.command AS command_from_pet_commands,
 pet_knows_commands.id AS id_from_pet_knows_commands, pet_knows_commands.id_pet AS id_from_pet_pet_knows_commands, pet_knows_commands.id_commands AS id_commands_from_pet_knows_commands,
-young_animals.id AS id_animal_type_from_young_animals, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
+young_animals.id AS id_animal_type_from_young_animalss, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
 FROM hamsters LEFT JOIN dogs ON hamsters.id = dogs.id
               LEFT JOIN cats ON hamsters.id = cats.id
               LEFT JOIN donkeys ON hamsters.id = donkeys.id
@@ -735,7 +737,7 @@ animal_type.id AS id_from_animal_type, animal_type.type AS type_from_animal_type
 horses_and_donkeys.id AS id_from_horses_and_donkeys, horses_and_donkeys.id_animal_type AS id_animal_type_from_horses_and_donkeys, horses_and_donkeys.date_of_birth AS date_of_birth_from_horses_and_donkeys, horses_and_donkeys.name AS name_from_horses_and_donkeys,
 pet_commands.id AS id_from_pet_commands, pet_commands.command AS command_from_pet_commands,
 pet_knows_commands.id AS id_from_pet_knows_commands, pet_knows_commands.id_pet AS id_from_pet_pet_knows_commands, pet_knows_commands.id_commands AS id_commands_from_pet_knows_commands,
-young_animals.id AS id_animal_type_from_young_animals, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
+young_animals.id AS id_animal_type_from_young_animalss, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
 FROM dogs LEFT JOIN hamsters ON dogs.id = hamsters.id
           LEFT JOIN cats ON dogs.id = cats.id
           LEFT JOIN donkeys ON dogs.id = donkeys.id
@@ -756,7 +758,7 @@ animal_type.id AS id_from_animal_type, animal_type.type AS type_from_animal_type
 horses_and_donkeys.id AS id_from_horses_and_donkeys, horses_and_donkeys.id_animal_type AS id_animal_type_from_horses_and_donkeys, horses_and_donkeys.date_of_birth AS date_of_birth_from_horses_and_donkeys, horses_and_donkeys.name AS name_from_horses_and_donkeys,
 pet_commands.id AS id_from_pet_commands, pet_commands.command AS command_from_pet_commands,
 pet_knows_commands.id AS id_from_pet_knows_commands, pet_knows_commands.id_pet AS id_from_pet_pet_knows_commands, pet_knows_commands.id_commands AS id_commands_from_pet_knows_commands,
-young_animals.id AS id_animal_type_from_young_animals, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
+young_animals.id AS id_animal_type_from_young_animalss, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
 FROM cats LEFT JOIN hamsters ON cats.id = hamsters.id
           LEFT JOIN dogs ON cats.id = dogs.id
           LEFT JOIN donkeys ON cats.id = donkeys.id
@@ -777,7 +779,7 @@ animal_type.id AS id_from_animal_type, animal_type.type AS type_from_animal_type
 horses_and_donkeys.id AS id_from_horses_and_donkeys, horses_and_donkeys.id_animal_type AS id_animal_type_from_horses_and_donkeys, horses_and_donkeys.date_of_birth AS date_of_birth_from_horses_and_donkeys, horses_and_donkeys.name AS name_from_horses_and_donkeys,
 pet_commands.id AS id_from_pet_commands, pet_commands.command AS command_from_pet_commands,
 pet_knows_commands.id AS id_from_pet_knows_commands, pet_knows_commands.id_pet AS id_from_pet_pet_knows_commands, pet_knows_commands.id_commands AS id_commands_from_pet_knows_commands,
-young_animals.id AS id_animal_type_from_young_animals, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
+young_animals.id AS id_animal_type_from_young_animalss, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
 FROM donkeys LEFT JOIN hamsters ON donkeys.id = hamsters.id
              LEFT JOIN dogs ON donkeys.id = dogs.id
              LEFT JOIN cats ON donkeys.id = cats.id
@@ -798,7 +800,7 @@ animal_type.id AS id_from_animal_type, animal_type.type AS type_from_animal_type
 horses_and_donkeys.id AS id_from_horses_and_donkeys, horses_and_donkeys.id_animal_type AS id_animal_type_from_horses_and_donkeys, horses_and_donkeys.date_of_birth AS date_of_birth_from_horses_and_donkeys, horses_and_donkeys.name AS name_from_horses_and_donkeys,
 pet_commands.id AS id_from_pet_commands, pet_commands.command AS command_from_pet_commands,
 pet_knows_commands.id AS id_from_pet_knows_commands, pet_knows_commands.id_pet AS id_from_pet_pet_knows_commands, pet_knows_commands.id_commands AS id_commands_from_pet_knows_commands,
-young_animals.id AS id_animal_type_from_young_animals, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
+young_animals.id AS id_animal_type_from_young_animalss, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
 FROM horses LEFT JOIN hamsters ON horses.id = hamsters.id
             LEFT JOIN dogs ON horses.id = dogs.id
             LEFT JOIN cats ON horses.id = cats.id
@@ -819,7 +821,7 @@ animal_type.id AS id_from_animal_type, animal_type.type AS type_from_animal_type
 horses_and_donkeys.id AS id_from_horses_and_donkeys, horses_and_donkeys.id_animal_type AS id_animal_type_from_horses_and_donkeys, horses_and_donkeys.date_of_birth AS date_of_birth_from_horses_and_donkeys, horses_and_donkeys.name AS name_from_horses_and_donkeys,
 pet_commands.id AS id_from_pet_commands, pet_commands.command AS command_from_pet_commands,
 pet_knows_commands.id AS id_from_pet_knows_commands, pet_knows_commands.id_pet AS id_from_pet_pet_knows_commands, pet_knows_commands.id_commands AS id_commands_from_pet_knows_commands,
-young_animals.id AS id_animal_type_from_young_animals, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
+young_animals.id AS id_animal_type_from_young_animalss, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
 FROM animal_type LEFT JOIN hamsters ON animal_type.id = hamsters.id
                  LEFT JOIN dogs ON animal_type.id = dogs.id
                  LEFT JOIN cats ON animal_type.id = cats.id
@@ -840,7 +842,7 @@ animal_type.id AS id_from_animal_type, animal_type.type AS type_from_animal_type
 horses_and_donkeys.id AS id_from_horses_and_donkeys, horses_and_donkeys.id_animal_type AS id_animal_type_from_horses_and_donkeys, horses_and_donkeys.date_of_birth AS date_of_birth_from_horses_and_donkeys, horses_and_donkeys.name AS name_from_horses_and_donkeys,
 pet_commands.id AS id_from_pet_commands, pet_commands.command AS command_from_pet_commands,
 pet_knows_commands.id AS id_from_pet_knows_commands, pet_knows_commands.id_pet AS id_from_pet_pet_knows_commands, pet_knows_commands.id_commands AS id_commands_from_pet_knows_commands,
-young_animals.id AS id_animal_type_from_young_animals, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
+young_animals.id AS id_animal_type_from_young_animalss, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
 FROM horses_and_donkeys LEFT JOIN hamsters ON horses_and_donkeys.id = hamsters.id
                         LEFT JOIN dogs ON horses_and_donkeys.id = dogs.id
                         LEFT JOIN cats ON horses_and_donkeys.id = cats.id
@@ -861,7 +863,7 @@ animal_type.id AS id_from_animal_type, animal_type.type AS type_from_animal_type
 horses_and_donkeys.id AS id_from_horses_and_donkeys, horses_and_donkeys.id_animal_type AS id_animal_type_from_horses_and_donkeys, horses_and_donkeys.date_of_birth AS date_of_birth_from_horses_and_donkeys, horses_and_donkeys.name AS name_from_horses_and_donkeys,
 pet_commands.id AS id_from_pet_commands, pet_commands.command AS command_from_pet_commands,
 pet_knows_commands.id AS id_from_pet_knows_commands, pet_knows_commands.id_pet AS id_from_pet_pet_knows_commands, pet_knows_commands.id_commands AS id_commands_from_pet_knows_commands,
-young_animals.id AS id_animal_type_from_young_animals, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
+young_animals.id AS id_animal_type_from_young_animalss, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
 FROM pet_commands LEFT JOIN hamsters ON pet_commands.id = hamsters.id
                   LEFT JOIN dogs ON pet_commands.id = dogs.id
                   LEFT JOIN cats ON pet_commands.id = cats.id
@@ -882,7 +884,7 @@ animal_type.id AS id_from_animal_type, animal_type.type AS type_from_animal_type
 horses_and_donkeys.id AS id_from_horses_and_donkeys, horses_and_donkeys.id_animal_type AS id_animal_type_from_horses_and_donkeys, horses_and_donkeys.date_of_birth AS date_of_birth_from_horses_and_donkeys, horses_and_donkeys.name AS name_from_horses_and_donkeys,
 pet_commands.id AS id_from_pet_commands, pet_commands.command AS command_from_pet_commands,
 pet_knows_commands.id AS id_from_pet_knows_commands, pet_knows_commands.id_pet AS id_from_pet_pet_knows_commands, pet_knows_commands.id_commands AS id_commands_from_pet_knows_commands,
-young_animals.id AS id_animal_type_from_young_animals, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
+young_animals.id AS id_animal_type_from_young_animalss, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
 FROM pet_knows_commands LEFT JOIN hamsters ON pet_knows_commands.id = hamsters.id
                         LEFT JOIN dogs ON pet_knows_commands.id = dogs.id
                         LEFT JOIN cats ON pet_knows_commands.id = cats.id
@@ -903,7 +905,7 @@ animal_type.id AS id_from_animal_type, animal_type.type AS type_from_animal_type
 horses_and_donkeys.id AS id_from_horses_and_donkeys, horses_and_donkeys.id_animal_type AS id_animal_type_from_horses_and_donkeys, horses_and_donkeys.date_of_birth AS date_of_birth_from_horses_and_donkeys, horses_and_donkeys.name AS name_from_horses_and_donkeys,
 pet_commands.id AS id_from_pet_commands, pet_commands.command AS command_from_pet_commands,
 pet_knows_commands.id AS id_from_pet_knows_commands, pet_knows_commands.id_pet AS id_from_pet_pet_knows_commands, pet_knows_commands.id_commands AS id_commands_from_pet_knows_commands,
-young_animals.id AS id_animal_type_from_young_animals, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
+young_animals.id AS id_animal_type_from_young_animalss, young_animals.id_animal_type AS id_animal_type_from_young_animals, young_animals.date_of_birth AS date_of_birth_from_young_animals, young_animals.name AS name_from_young_animals, young_animals.age AS age_from_young_animals
 FROM young_animals LEFT JOIN hamsters ON young_animals.id = hamsters.id
                    LEFT JOIN dogs ON young_animals.id = dogs.id
                    LEFT JOIN cats ON young_animals.id = cats.id
