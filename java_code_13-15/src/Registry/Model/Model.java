@@ -134,14 +134,23 @@ public class Model implements IModel {
     @Override
     public void addNewPet(String table, int type, String dateOfBirth, String name) throws SQLException, ClassNotFoundException {
         connect();
+        int lastPetId = checkLastIdPetKnowsCommand();
+        System.out.println(lastPetId);
         Creator creator = Creator.getInstance();
-        statement.executeUpdate( "INSERT INTO " + table + "(id_animal_type, date_of_birth, name) VALUES (" + type + ", '" + dateOfBirth + "', '" + name + "');");
+        statement.executeUpdate( "INSERT INTO " + table + "(id_command, id_animal_type, date_of_birth, name) VALUES ('" + ++lastPetId + "', " + type + ", '" + dateOfBirth + "', '" + name + "');");
 
     }
 
-    public void checkLastIdPetKnowsCommand() throws SQLException, ClassNotFoundException {
-        connect();
-
+    public int checkLastIdPetKnowsCommand() throws SQLException {
+        int lastValue = 0;
+        resultSet = statement.executeQuery( "SELECT c.id_pet\n" +
+                                                "FROM pet_knows_commands c\n" +
+                                                "ORDER BY id DESC\n" +
+                                                "LIMIT 1;");
+        if (resultSet.next()) {
+            lastValue = resultSet.getInt("id_pet");
+        }
+        return lastValue;
     }
 
     public ArrayList<Command> showPetCommands(int id) {

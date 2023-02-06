@@ -70,7 +70,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`hamsters` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`hamsters` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `id_command` INT,
+  `id_command` INT NOT NULL,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -91,7 +91,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`cats` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`cats` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `id_command` INT,
+  `id_command` INT NOT NULL,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -112,7 +112,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`dogs` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`dogs` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `id_command` INT,
+  `id_command` INT NOT NULL,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -133,7 +133,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`horses` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`horses` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `id_command` INT,
+  `id_command` INT NOT NULL,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -154,7 +154,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`camels` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`camels` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `id_command` INT,
+  `id_command` INT NOT NULL,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -175,7 +175,7 @@ DROP TABLE IF EXISTS `friends_of_man`.`donkeys` ;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`donkeys` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `id_command` INT,
+  `id_command` INT NOT NULL,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -645,7 +645,7 @@ DROP TABLE camels;
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`horses_and_donkeys` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `id_command` INT,
+  `id_command` INT NOT NULL,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
@@ -669,7 +669,7 @@ INSERT INTO horses_and_donkeys (id_command, id_animal_type, date_of_birth, name)
 
 CREATE TABLE IF NOT EXISTS `friends_of_man`.`young_animals` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `id_command` INT,
+  `id_command` INT NOT NULL,
   `id_animal_type` INT NOT NULL,
   `date_of_birth` DATETIME,
   `name` VARCHAR(45),
