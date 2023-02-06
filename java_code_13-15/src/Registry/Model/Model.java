@@ -29,13 +29,14 @@ public class Model implements IModel {
         forCommandConnect();
         Map<Animal, ArrayList<Command>> animals = new HashMap<>();
         int id = 0;
+        int idCommand = 0;
         String dateOfBirth = null;
-        String type = null;
         String name = null;
         String command = null;
+        Command enumCom = null;
         Creator creator = Creator.getInstance();
         //ArrayList<Animal> animals = new ArrayList<>();
-        ArrayList<Command> commands = new ArrayList<>();
+        ArrayList<Command> commands;
         boolean flag = true;
         try {
             resultSet = statement.executeQuery(
@@ -43,20 +44,22 @@ public class Model implements IModel {
                             "FROM " + table + " a;");
             while (resultSet.next()) {
                 id = resultSet.getInt("id");
+                idCommand = resultSet.getInt("id_command");
                 dateOfBirth = resultSet.getString("date_of_birth").trim();
                 name = resultSet.getString("name").trim();
                 creator.createASpecificAnimal(table, id, dateOfBirth, name);
-                commands.clear();
+                commands = new ArrayList<>();
                 forCommandResultSet = forCommandStatement.executeQuery(
                         "SELECT co.command\n" +
                                 "FROM " + table + " a\n" +
-                                "INNER JOIN pet_knows_commands c ON a.id_animal_type = c.id_pet\n" +
-                                "INNER JOIN pet_commands co ON c.id_commands = co.id\n" +
-                                "WHERE a.id = " + id + ";"
+                                "LEFT JOIN pet_knows_commands c ON a.id_command = c.id_pet\n" +
+                                "LEFT JOIN pet_commands co ON c.id_commands = co.id\n" +
+                                "WHERE a.id_command = " + idCommand + ";"
                 );
                 while (forCommandResultSet.next()) {
                     command = forCommandResultSet.getString("command");
-                    Command enumCom = Command.valueOf(command);
+                    if (command != null)
+                        enumCom = Command.valueOf(command);
                     commands.add(enumCom);
                 }
                 animals.put(creator.createASpecificAnimal(table, id, dateOfBirth, name), commands);
