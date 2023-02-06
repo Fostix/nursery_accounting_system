@@ -48,6 +48,9 @@ public abstract class Animal {
     public Command getCommandById(int id) {
         return commands.getById(id);
     }
+    public PetCommands<Command> getListOfCommands() {
+        return commands;
+    }
 
     public void addCommand(Command commands) {
         this.commands.addCommand(commands);

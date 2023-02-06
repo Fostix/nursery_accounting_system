@@ -25,20 +25,14 @@ public class Model implements IModel {
     public ArrayList<Animal> getListOfAllPets(String table) {
         connect();
         forCommandConnect();
-        AnimalAndCommand animalAndCommand;
-       // ArrayList<AnimalAndCommand> animals = new ArrayList<>();
         ArrayList<Animal> animals = new ArrayList<>();
-        //Map<Animal, ArrayList<Command>> animals = new HashMap<>();
-//        ArrayAnimals<Animal, ArrayList<Command>> animalss = new ArrayAnimals<>();
-//        Map<Animal, ArrayList<Command>> animalss = new <>();
         int id = 0;
         int idCommand = 0;
-        String dateOfBirth = null;
-        String name = null;
-        String command = null;
-        Command enumCom = null;
+        String dateOfBirth;
+        String name;
+        String command;
+        Command enumCom;
         Creator creator = Creator.getInstance();
-        ArrayList<Command> commands = null;
         Animal animal;
         boolean flag = true;
         try {
@@ -51,7 +45,6 @@ public class Model implements IModel {
                 dateOfBirth = resultSet.getString("date_of_birth").trim();
                 name = resultSet.getString("name").trim();
                 animal = creator.createASpecificAnimal(table, id, dateOfBirth, name);
-                commands = new ArrayList<>();
                 forCommandResultSet = forCommandStatement.executeQuery(
                         "SELECT co.command\n" +
                                 "FROM " + table + " a\n" +
@@ -67,8 +60,6 @@ public class Model implements IModel {
                     }
                 }
                 animals.add(animal);
-//                animals.add(creator.createASpecificAnimal(table, id, dateOfBirth, name), commands);
-//                animals.put(creator.createASpecificAnimal(table, id, dateOfBirth, name), commands);
             }
             resultSet.close();
             statement.close();

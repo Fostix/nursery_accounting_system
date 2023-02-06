@@ -52,16 +52,20 @@ public class Presenter {
     public void showAllPets() {
         viewContract.println("pets");
         for (int i = 0; i < animalType.length; i++) {
-            System.out.println(model.getListOfAllPets(animalType[i]));
+            viewContract.println("_".repeat(100));
+            viewContract.println(animalType[i]);
+            viewContract.println("-".repeat(50));
+            for (Animal a : model.getListOfAllPets(animalType[i])) {
+                viewContract.print(String.valueOf(a.getId()));
+                viewContract.print(a.getName());
+                viewContract.print(a.getDateOfBirth());
+                for (int j = 0; j < a.getListOfCommands().getSize(); j++) {
+                    viewContract.print(a.getCommandById(j).toString() + ",");
+                }
+                viewContract.println("");
+            }
             if (i == 2) // after 3 show pack animals
                 viewContract.println("pack animals");
-            //System.out.println(listAnimal.size());
-            //System.out.println(listAnimal.values());
-//            for (Animal animal : listAnimal) {
-//                viewContract.print(Integer.toString(animal.getId()));
-//                viewContract.print(animal.getDateOfBirth());
-//                viewContract.println(animal.getName());
-//            }
         }
     }
 
