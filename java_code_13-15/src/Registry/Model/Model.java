@@ -111,7 +111,8 @@ public class Model implements IModel {
         Creator creator = Creator.getInstance();
         ArrayList<Animal> animals = new ArrayList<>();
         for (int i = 0; i < animalTables.length; i++) {
-            resultSet = statement.executeQuery( "SELECT id, date_of_birth, name FROM " + animalTables[i] + " WHERE date_of_birth = '" + dateOfBirth + "';");
+            resultSet = statement.executeQuery( "SELECT id, date_of_birth, name FROM " + animalTables[i] + " WHERE date_of_birth = '"
+                    + dateOfBirth + "';");
             while (resultSet.next()) {
                 id = resultSet.getInt("id");
                 dateOfBirth = resultSet.getString("date_of_birth").trim();
@@ -137,19 +138,32 @@ public class Model implements IModel {
         int lastPetId = checkLastIdPetKnowsCommand();
         System.out.println(lastPetId);
         Creator creator = Creator.getInstance();
-        statement.executeUpdate( "INSERT INTO " + table + "(id_command, id_animal_type, date_of_birth, name) VALUES ('" + ++lastPetId + "', " + type + ", '" + dateOfBirth + "', '" + name + "');");
-
+        statement.executeUpdate( "INSERT INTO " + table + "(id_command, id_animal_type, date_of_birth, name) VALUE ('"
+                + ++lastPetId + "', " + type + ", '" + dateOfBirth + "', '" + name + "');");
     }
 
     public int checkLastIdPetKnowsCommand() throws SQLException {
         int lastValue = 0;
-        resultSet = statement.executeQuery( "SELECT c.id_pet\n" +
-                                                "FROM pet_knows_commands c\n" +
-                                                "ORDER BY id DESC\n" +
-                                                "LIMIT 1;");
+        statement.executeUpdate( "CREATE temporary TABLE max_value_all_pets AS\n" +
+                "SELECT MAX(id_command) AS id_command\n" +
+                "FROM hamsters\n" +
+                "UNION\n" +
+                "SELECT MAX(id_command) AS id_command\n" +
+                "FROM dogs\n" +
+                "UNION\n" +
+                "SELECT MAX(id_command) AS id_command\n" +
+                "FROM cats\n" +
+                "UNION\n" +
+                "SELECT MAX(id_command) AS id_command\n" +
+                "FROM donkeys\n" +
+                "UNION\n" +
+                "SELECT MAX(id_command) AS id_command\n" +
+                "FROM horses;");
+        resultSet = statement.executeQuery("SELECT MAX(id_command) AS id_command FROM max_value_all_pets;");
         if (resultSet.next()) {
-            lastValue = resultSet.getInt("id_pet");
+            lastValue = resultSet.getInt("id_command");
         }
+        statement.executeUpdate("DROP TABLE max_value_all_pets;");
         return lastValue;
     }
 
@@ -161,7 +175,8 @@ public class Model implements IModel {
 //        ArrayList<Animal> animals = new ArrayList<>();
 //        try {
 //            for (int i = 0; i < animalTables.length; i++) {
-//                resultSet = statement.executeQuery( "SELECT c.id_commands FROM " + animalTables[i] + " WHERE date_of_birth = '" + dateOfBirth + "';");
+//                resultSet = statement.executeQuery( "SELECT c.id_commands FROM " + animalTables[i] +
+//                " WHERE date_of_birth = '" + dateOfBirth + "';");
 //                while (resultSet.next()) {
 //                    id = resultSet.getInt("id");
 //                    dateOfBirth = resultSet.getString("date_of_birth").trim();

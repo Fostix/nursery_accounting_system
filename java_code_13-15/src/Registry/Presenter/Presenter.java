@@ -47,6 +47,8 @@ public class Presenter {
             case "5":
                 addNewPet();
                 break;
+            case "6":
+                break;
         }
     }
 
