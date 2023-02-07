@@ -110,7 +110,7 @@ public class Model implements IModel {
     public PetCommands<Command> getPetCommands(String petNumber) throws SQLException, ClassNotFoundException {
         Command enumCom;
         String getCommand;
-        PetCommands<Command> command = new PetCommands<>();
+        PetCommands<Command> commands = new PetCommands<>();
         connect();
 
         resultSet = statement.executeQuery("SELECT c.command\n" +
@@ -120,20 +120,34 @@ public class Model implements IModel {
                 "WHERE id_pet = " + petNumber + ";");
         while (resultSet.next()) {
             getCommand = resultSet.getString("command");
-            if (command != null) {
+            if (commands != null) {
                 enumCom = Command.valueOf(getCommand);
-                command.addCommand(enumCom);
+                commands.addCommand(enumCom);
             }
         }
-        return command;
+        return commands;
+    }
+
+    @Override
+    public PetCommands<Command> getAllCommands() {
+        PetCommands<Command> commands = new PetCommands<>();
+        commands.addCommand(Command.GO);
+        commands.addCommand(Command.STOP);
+        commands.addCommand(Command.RUN_AWAY);
+        commands.addCommand(Command.COME_UP);
+        commands.addCommand(Command.LIE);
+        commands.addCommand(Command.JUMP);
+        commands.addCommand(Command.TRUP);
+        commands.addCommand(Command.STAND_UP);
+        return commands;
     }
 
     @Override
     public void teachANewPetCommand(String petNumber) throws SQLException, ClassNotFoundException {
         connect();
+
         // query witch command don't know.
         // return commands which pet don't know.
-
     }
 
     public int checkLastIdPetKnowsCommand() throws SQLException {
@@ -229,35 +243,5 @@ public class Model implements IModel {
         forCommandConnection.close();
 
         return animal;
-    }
-
-    public ArrayList<Command> showPetCommands(int id) {
-//        connect();
-//        String type = null;
-//        String name = null;
-//        Creator creator = Creator.getInstance();
-//        ArrayList<Animal> animals = new ArrayList<>();
-//        try {
-//            for (int i = 0; i < animalTables.length; i++) {
-//                resultSet = statement.executeQuery( "SELECT c.id_commands FROM " + animalTables[i] +
-//                " WHERE date_of_birth = '" + dateOfBirth + "';");
-//                while (resultSet.next()) {
-//                    id = resultSet.getInt("id");
-//                    dateOfBirth = resultSet.getString("date_of_birth").trim();
-//                    name = resultSet.getString("name").trim();
-//                    animals.add(creator.createASpecificAnimal(table, id, dateOfBirth, name));
-//                }
-//            }
-//            resultSet.close();
-//            statement.close();
-//            connection.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        SELECT c.id_commands
-//        FROM dogs a
-//        INNER JOIN pet_knows_commands c ON a.id = c.id_pet
-//        WHERE a.id = 1;
-        return null;
     }
 }

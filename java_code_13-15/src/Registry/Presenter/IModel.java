@@ -13,6 +13,7 @@ public interface IModel {
     void addNewPet(String table, int type, String dateOfBirth, String name) throws SQLException, ClassNotFoundException;
     void teachANewPetCommand(String petNumber) throws SQLException, ClassNotFoundException;
     PetCommands<Command> getPetCommands(String petNumber) throws SQLException, ClassNotFoundException;
-    ArrayList<Command> showPetCommands(int id);
+    PetCommands<Command> getAllCommands();
     Animal getPetByIdCommand(int idCommand) throws SQLException, ClassNotFoundException;
+
 }

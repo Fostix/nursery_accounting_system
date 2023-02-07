@@ -32,6 +32,11 @@ public class View implements ViewContract {
     }
 
     @Override
+    public void println() {
+        System.out.println();
+    }
+
+    @Override
     public void printlnEr(String data) {
         System.err.println(data);
     }

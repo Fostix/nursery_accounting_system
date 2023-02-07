@@ -31,6 +31,10 @@ public class PetCommands<C extends Command> implements Iterable {
         commands.remove(command);
     }
 
+    public boolean contain(C command) {
+        return commands.contains(command);
+    }
+
     @Override
     public Iterator iterator() {
         Iterator<Command> iter = new Iterator<>() {
