@@ -48,6 +48,7 @@ public class Presenter {
                 addNewPet();
                 break;
             case "6":
+                teachANewPetCommand();
                 break;
         }
     }
@@ -140,7 +141,7 @@ public class Presenter {
     }
 
     public void teachANewPetCommand() {
-
+        viewContract.print("Enter number pet: ");
     }
 
     public void addNewPet() {
