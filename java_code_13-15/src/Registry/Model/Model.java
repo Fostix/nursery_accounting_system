@@ -15,10 +15,6 @@ public class Model implements IModel {
     private Connection forCommandConnection;
     private Statement forCommandStatement;
     private ResultSet forCommandResultSet;
-    private String[] animalTables;
-    public Model() {
-        animalTables = new String[]{"hamsters", "cats", "dogs", "horses", "donkeys"};
-    }
 
     @Override
     public ArrayList<Animal> getListOfAllPets(String table) throws SQLException, ClassNotFoundException {
@@ -33,7 +29,6 @@ public class Model implements IModel {
         Command enumCom;
         Creator creator = Creator.getInstance();
         Animal animal;
-        boolean flag = true;
         resultSet = statement.executeQuery(
                 "SELECT * \n" +
                         "FROM " + table + " a;");
@@ -87,54 +82,19 @@ public class Model implements IModel {
         connect();
         int idCommand = 0;
         String dateOfBirth = null;
-        String type = null;
         String name = null;
         Creator creator = Creator.getInstance();
         resultSet = statement.executeQuery( "SELECT id, id_command, date_of_birth, name FROM " + table + " WHERE id = " + id + ";");
         while (resultSet.next()) {
             id = resultSet.getInt("id");
             idCommand = resultSet.getInt("id_command");
-            type = resultSet.getString("type").trim();
             dateOfBirth = resultSet.getString("date_of_birth").trim();
             name = resultSet.getString("name").trim();
-            return creator.createASpecificAnimal(table, idCommand, id, dateOfBirth, name);
         }
         resultSet.close();
         statement.close();
         connection.close();
-        return null;
-    }
-
-    @Override
-    public ArrayList<Animal> getPetByDataOfBirth(String table, String dateOfBirth) throws SQLException, ClassNotFoundException {
-        connect();
-        int id = 0;
-        int idCommand = 0;
-        String type = null;
-        String name = null;
-        Creator creator = Creator.getInstance();
-        ArrayList<Animal> animals = new ArrayList<>();
-        for (int i = 0; i < animalTables.length; i++) {
-            resultSet = statement.executeQuery( "SELECT id, id_command, date_of_birth, name FROM " + animalTables[i] + " WHERE date_of_birth = '"
-                    + dateOfBirth + "';");
-            while (resultSet.next()) {
-                id = resultSet.getInt("id");
-                idCommand = resultSet.getInt("id_command");
-                dateOfBirth = resultSet.getString("date_of_birth").trim();
-                name = resultSet.getString("name").trim();
-                animals.add(creator.createASpecificAnimal(table, idCommand, id, dateOfBirth, name));
-            }
-        }
-        resultSet.close();
-        statement.close();
-        connection.close();
-        return animals;
-    }
-
-    @Override
-    public ArrayList<Animal> getPetByName() {
-
-        return null;
+        return creator.createASpecificAnimal(table, idCommand, id, dateOfBirth, name);
     }
 
     @Override
@@ -193,12 +153,82 @@ public class Model implements IModel {
                 "UNION\n" +
                 "SELECT MAX(id_command) AS id_command\n" +
                 "FROM horses;");
-        resultSet = statement.executeQuery("SELECT MAX(id_command) AS id_command FROM max_value_all_pets;");
+        resultSet = statement.executeQuery("SELECT MAX(id_command) AS id_command " +
+                "FROM max_value_all_pets;");
         if (resultSet.next()) {
             lastValue = resultSet.getInt("id_command");
         }
         statement.executeUpdate("DROP TABLE max_value_all_pets;");
         return lastValue;
+    }
+
+    @Override
+    public Animal getPetByIdCommand(int idCommand) throws SQLException, ClassNotFoundException {
+        connect();
+        forCommandConnect();
+
+        int id = 0;
+        String dateOfBirth;
+        String name;
+        String command;
+        Command enumCom;
+        Creator creator = Creator.getInstance();
+        Animal animal = null;
+
+        statement.executeUpdate( "CREATE TABLE all_pets AS\n" +
+                "SELECT *\n" +
+                "FROM hamsters\n" +
+                "UNION\n" +
+                "SELECT *\n" +
+                "FROM dogs\n" +
+                "UNION\n" +
+                "SELECT *\n" +
+                "FROM cats\n" +
+                "UNION\n" +
+                "SELECT *\n" +
+                "FROM donkeys\n" +
+                "UNION\n" +
+                "SELECT *\n" +
+                "FROM horses;"
+        );
+
+        resultSet = statement.executeQuery("SELECT *\n" +
+                "FROM all_pets a\n" +
+                "WHERE id_command = " + idCommand + ";");
+
+        while (resultSet.next()) {
+            id = resultSet.getInt("id");
+            idCommand = resultSet.getInt("id_command");
+            dateOfBirth = resultSet.getString("date_of_birth").trim();
+            name = resultSet.getString("name").trim();
+            animal = creator.createASpecificAnimal("cats", idCommand, id, dateOfBirth, name);
+
+            forCommandResultSet = forCommandStatement.executeQuery(
+                    "SELECT co.command\n" +
+                            "FROM all_pets a\n" +
+                            "LEFT JOIN pet_knows_commands c ON a.id_command = c.id_pet\n" +
+                            "LEFT JOIN pet_commands co ON c.id_commands = co.id\n" +
+                            "WHERE a.id_command = " + idCommand + ";"
+            );
+
+            while (forCommandResultSet.next()) {
+                command = forCommandResultSet.getString("command");
+                if (command != null) {
+                    enumCom = Command.valueOf(command);
+                    animal.addCommand(enumCom);
+                }
+            }
+        }
+        statement.executeUpdate("DROP TABLE all_pets;");
+
+        resultSet.close();
+        statement.close();
+        connection.close();
+        forCommandResultSet.close();
+        forCommandStatement.close();
+        forCommandConnection.close();
+
+        return animal;
     }
 
     public ArrayList<Command> showPetCommands(int id) {

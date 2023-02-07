@@ -5,14 +5,11 @@ import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
 import Registry.Model.FriendsOfMan.PetCommands.PetCommands;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Presenter {
     private ViewContract viewContract;
     private final IModel model;
-    private ArrayList<Animal> tempPets;
     private static String[] animalType;
-    private Animal animal;
 
     public Presenter(IModel model) {
         this.model = model;
@@ -28,7 +25,7 @@ public class Presenter {
 
     public void menu() {
         viewContract.showMenu();
-        String num = "6"; //viewContract.enterData();
+        String num = "4"; //viewContract.enterData();
         switch (num) {
             case "1":
                 showAllPets();
@@ -36,47 +33,54 @@ public class Presenter {
             case "2":
                 showAllPetsInTable();
                 break;
-            case "2.5":
-                searchPetById();
-                teachANewPetCommand();
-                break;
             case "3":
-                searchPetByDateOfBirth();
+                infoPet(targetPet());
+                petManipulation(targetPet());
                 break;
             case "4":
-                searchPetByName();
+                petManipulation(searchPetById());
                 break;
             case "5":
                 addNewPet();
                 break;
-            case "6":
-                teachANewPetCommand();
+            }
+    }
+
+    public void petManipulation(int numberPet) {
+        viewContract.petManipulation();
+        String num = viewContract.enterData();
+        switch (num) {
+            case "1":
+                teachANewPetCommand(numberPet);
                 break;
+            case "2":
+        }
+    }
+
+    public void infoPet(int number) {
+        try {
+            Animal animal = model.getPetByIdCommand(number);
+            printAnimal(animal);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
     public void showAllPets() {
-        viewContract.println("pets");
+        viewContract.println("|   PETS   |");
         for (int i = 0; i < animalType.length; i++) {
             viewContract.println("_".repeat(100));
             viewContract.println(animalType[i]);
             viewContract.println("-".repeat(50));
             try {
-                for (Animal a : model.getListOfAllPets(animalType[i])) {
-                    viewContract.print(a.getNumber() + "  ");
-                    viewContract.print(a.getId() + "  ");
-                    viewContract.print(a.getName() + "  ");
-                    viewContract.print(a.getDateOfBirth() + "  ");
-                    for (int j = 0; j < a.getListOfCommands().getSize(); j++) {
-                        viewContract.print(a.getCommandById(j).toString() + ",");
-                    }
-                    viewContract.println("");
+                for (Animal animal : model.getListOfAllPets(animalType[i])) {
+                    printAnimal(animal);
                 }
             } catch (SQLException | ClassNotFoundException e) {
                 viewContract.printlnEr(e.getMessage());
             }
             if (i == 2) // after 3 show pack animals
-                viewContract.println("pack animals");
+                viewContract.println("|   PACK ANIMALS   |");
         }
     }
 
@@ -84,22 +88,32 @@ public class Presenter {
         viewContract.print("Enter table name:");
         String table = viewContract.enterData();
         try {
-            for (Animal a : model.getListOfAllPets(table)) {
-                viewContract.print(String.valueOf(a.getId()));
-                viewContract.print(a.getName());
-                viewContract.print(a.getDateOfBirth());
-                for (int j = 0; j < a.getListOfCommands().getSize(); j++) {
-                    viewContract.print(a.getCommandById(j).toString() + ",");
-                }
-                viewContract.println("");
+            for (Animal animal : model.getListOfAllPets(table)) {
+                printAnimal(animal);
             }
         } catch (SQLException | ClassNotFoundException e) {
             viewContract.printlnEr(e.getMessage());
         }
     }
 
+    public void printAnimal(Animal animal) {
+        viewContract.print(animal.getNumber() + "   ");
+        viewContract.print(animal.getId() + "   ");
+        viewContract.print(animal.getName() + "   ");
+        viewContract.print(animal.getDateOfBirth() + "   ");
 
-    public void searchPetById() {
+        for (int j = 0; j < animal.getListOfCommands().getSize(); j++) {
+            viewContract.print(animal.getCommandById(j).toString());
+            if (j < animal.getListOfCommands().getSize() - 1)
+                viewContract.print(", ");
+            else
+                viewContract.print(".");
+        }
+        viewContract.println("");
+    }
+
+
+    public int searchPetById() {
         viewContract.print("enter pet table: ");
         String value = viewContract.enterData();
         viewContract.print("enter pet id: ");
@@ -113,22 +127,10 @@ public class Presenter {
         if (animal == null) {
             viewContract.println("wrong");
         } else {
-            viewContract.print(Integer.toString(animal.getId()));
-            viewContract.print(animal.getDateOfBirth());
-            viewContract.println(animal.getName());
+            printAnimal(animal);
         }
-    }
-
-    public void searchPetByDateOfBirth() {
-        viewContract.print("Enter date of birth");
-        String data = viewContract.enterData();
-        for (String at : animalType) {
-            try {
-                model.getPetByDataOfBirth(at, data);
-            } catch (SQLException | ClassNotFoundException e) {
-                viewContract.printlnEr(e.getMessage());
-            }
-        }
+        assert animal != null;
+        return animal.getNumber();
     }
 
     public void showPetCommands() {
@@ -139,21 +141,20 @@ public class Presenter {
 
     }
 
-    public String targetPet() {
+    public int targetPet() {
         viewContract.print("Enter number pet: ");
-        String number = viewContract.enterData(); //TODO: that not number !!!
-        return number;
+        return Integer.parseInt(viewContract.enterData()); //TODO: that not number !!!
     }
 
-    public void teachANewPetCommand() {
-        String pet = targetPet();
+    public void teachANewPetCommand(int numberPet) {
+        String numberPetString = String.valueOf(numberPet);
         try {
-            PetCommands<Command> commands = model.getPetCommands(pet);
+            PetCommands<Command> commands = model.getPetCommands(numberPetString);
             for (Object c : commands) {
                 viewContract.print(c.toString());
             }
             viewContract.println("");
-            model.teachANewPetCommand(pet);
+            model.teachANewPetCommand(numberPetString);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

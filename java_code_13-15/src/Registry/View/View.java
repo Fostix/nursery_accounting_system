@@ -16,8 +16,14 @@ public class View implements ViewContract {
     }
 
     @Override
+    public void petManipulation() {
+        System.out.println("1 - teach a new command");
+        System.out.println("2 - exit");
+    }
+
+    @Override
     public void print(String data) {
-        System.out.print(data + " ");
+        System.out.print(data);
     }
 
     @Override
