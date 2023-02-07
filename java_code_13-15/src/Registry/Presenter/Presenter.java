@@ -26,7 +26,7 @@ public class Presenter {
 
     public void menu() {
         viewContract.showMenu();
-        String num = "5"; //viewContract.enterData();
+        String num = "1"; //viewContract.enterData();
         switch (num) {
             case "1":
                 showAllPets();
