@@ -1,6 +1,8 @@
 package Registry.Presenter;
 
 import Registry.Model.FriendsOfMan.Animals.Animal;
+import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
+import Registry.Model.FriendsOfMan.PetCommands.PetCommands;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class Presenter {
 
     public void menu() {
         viewContract.showMenu();
-        String num = "1"; //viewContract.enterData();
+        String num = "6"; //viewContract.enterData();
         switch (num) {
             case "1":
                 showAllPets();
@@ -137,12 +139,24 @@ public class Presenter {
 
     }
 
-    public void chooseAPet() {
-
+    public String targetPet() {
+        viewContract.print("Enter number pet: ");
+        String number = viewContract.enterData(); //TODO: that not number !!!
+        return number;
     }
 
     public void teachANewPetCommand() {
-        viewContract.print("Enter number pet: ");
+        String pet = targetPet();
+        try {
+            PetCommands<Command> commands = model.getPetCommands(pet);
+            for (Object c : commands) {
+                viewContract.print(c.toString());
+            }
+            viewContract.println("");
+            model.teachANewPetCommand(pet);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void addNewPet() {

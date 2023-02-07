@@ -2,6 +2,7 @@ package Registry.Model;
 
 import Registry.Model.FriendsOfMan.Animals.Animal;
 import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
+import Registry.Model.FriendsOfMan.PetCommands.PetCommands;
 import Registry.Presenter.IModel;
 
 import java.sql.*;
@@ -140,10 +141,39 @@ public class Model implements IModel {
     public void addNewPet(String table, int type, String dateOfBirth, String name) throws SQLException, ClassNotFoundException {
         connect();
         int lastPetId = checkLastIdPetKnowsCommand();
-        System.out.println(lastPetId);
         Creator creator = Creator.getInstance();
         statement.executeUpdate( "INSERT INTO " + table + "(id_command, id_animal_type, date_of_birth, name) VALUE ('"
                 + ++lastPetId + "', " + type + ", '" + dateOfBirth + "', '" + name + "');");
+    }
+
+    @Override
+    public PetCommands<Command> getPetCommands(String petNumber) throws SQLException, ClassNotFoundException {
+        Command enumCom;
+        String getCommand;
+        PetCommands<Command> command = new PetCommands<>();
+        connect();
+
+        resultSet = statement.executeQuery("SELECT c.command\n" +
+                "FROM pet_knows_commands k\n" +
+                "INNER JOIN pet_commands c \n" +
+                "ON c.id = k.id_commands\n" +
+                "WHERE id_pet = " + petNumber + ";");
+        while (resultSet.next()) {
+            getCommand = resultSet.getString("command");
+            if (command != null) {
+                enumCom = Command.valueOf(getCommand);
+                command.addCommand(enumCom);
+            }
+        }
+        return command;
+    }
+
+    @Override
+    public void teachANewPetCommand(String petNumber) throws SQLException, ClassNotFoundException {
+        connect();
+        // query witch command don't know.
+        // return commands which pet don't know.
+
     }
 
     public int checkLastIdPetKnowsCommand() throws SQLException {

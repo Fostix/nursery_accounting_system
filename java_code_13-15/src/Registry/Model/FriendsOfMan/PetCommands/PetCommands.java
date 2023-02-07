@@ -33,7 +33,7 @@ public class PetCommands<C extends Command> implements Iterable {
 
     @Override
     public Iterator iterator() {
-        Iterator<Command> iter = new Iterator<Command>() {
+        Iterator<Command> iter = new Iterator<>() {
             private int index = 0;
             @Override
             public boolean hasNext() {

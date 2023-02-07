@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e" pages="2">
     <diagram id="rW4Tu4EbM_tbF5WcZ0SO" name="Page-1">
-        <mxGraphModel dx="2246" dy="1546" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="964" dy="773" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -281,7 +281,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="90USG8wOLYOWAHy-OSG_" name="Page-3">
-        <mxGraphModel dx="3096" dy="3746" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1768" dy="2954" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -471,7 +471,7 @@
                 <mxCell id="aJxkpa-kqfiAPnuDxRBT-59" value="&lt;&lt;Abstract&gt;&gt;&#10;Animal" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=16;" parent="1" vertex="1">
                     <mxGeometry x="-210" y="-972" width="290" height="300" as="geometry"/>
                 </mxCell>
-                <mxCell id="aJxkpa-kqfiAPnuDxRBT-60" value="- id: int&#10;- dateOfBirth: datetime&#10;- name: String&#10;- commands: PetCommands" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;fontStyle=2" parent="aJxkpa-kqfiAPnuDxRBT-59" vertex="1">
+                <mxCell id="aJxkpa-kqfiAPnuDxRBT-60" value="- id: int&#10;- number: int&#10;- dateOfBirth: datetime&#10;- name: String&#10;- commands: PetCommands" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;fontStyle=2" parent="aJxkpa-kqfiAPnuDxRBT-59" vertex="1">
                     <mxGeometry y="50" width="290" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="aJxkpa-kqfiAPnuDxRBT-61" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;fontSize=16;" parent="aJxkpa-kqfiAPnuDxRBT-59" vertex="1">
@@ -539,9 +539,10 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="aJxkpa-kqfiAPnuDxRBT-74" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="aJxkpa-kqfiAPnuDxRBT-60" target="aJxkpa-kqfiAPnuDxRBT-66" edge="1">
-                    <mxGeometry x="-1" y="3" relative="1" as="geometry">
+                    <mxGeometry x="0.0082" y="15" relative="1" as="geometry">
                         <mxPoint x="-280" y="-952" as="sourcePoint"/>
                         <mxPoint x="-120" y="-952" as="targetPoint"/>
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="v6XVyfRXMdCOt2D570kw-1" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="9brq2_N2xXxs9rocdczO-1" target="aJxkpa-kqfiAPnuDxRBT-60" edge="1">
@@ -564,6 +565,9 @@
                 </mxCell>
                 <mxCell id="v6XVyfRXMdCOt2D570kw-4" value="1" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=top;" parent="v6XVyfRXMdCOt2D570kw-2" connectable="0" vertex="1">
                     <mxGeometry x="1" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5Sf74u3WCsPn5zhkPA3i-9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;MySQL&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ field1: Type&lt;br&gt;+ field2: Type&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ method1(Type): Type&lt;br&gt;+ method2(Type, Type): Type&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-280" y="-160" width="190" height="140" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

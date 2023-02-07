@@ -2,6 +2,7 @@ package Registry.Presenter;
 
 import Registry.Model.FriendsOfMan.Animals.Animal;
 import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
+import Registry.Model.FriendsOfMan.PetCommands.PetCommands;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,5 +13,7 @@ public interface IModel {
     ArrayList<Animal> getPetByDataOfBirth(String table, String dateOfBirth) throws SQLException, ClassNotFoundException;
     ArrayList<Animal> getPetByName();
     void addNewPet(String table, int type, String dateOfBirth, String name) throws SQLException, ClassNotFoundException;
-    public ArrayList<Command> showPetCommands(int id);
+    void teachANewPetCommand(String petNumber) throws SQLException, ClassNotFoundException;
+    PetCommands<Command> getPetCommands(String petNumber) throws SQLException, ClassNotFoundException ;
+    ArrayList<Command> showPetCommands(int id);
 }
