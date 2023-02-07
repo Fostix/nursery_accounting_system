@@ -6,15 +6,25 @@ import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
 import Registry.Model.FriendsOfMan.PetCommands.PetCommands;
 
 public abstract class Animal {
+    private int number;
     private int id;
     private String dateOfBirth;
     private String name;
     private PetCommands<Command> commands = new PetCommands<Command>();
 
-    public Animal(int id, String dateOfBirth, String name) {
+    public Animal(int number, int id, String dateOfBirth, String name) {
+        this.number = number;
         setId(id);
         this.dateOfBirth = dateOfBirth;
         this.name = name;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public int getId() {
@@ -48,6 +58,7 @@ public abstract class Animal {
     public Command getCommandById(int id) {
         return commands.getById(id);
     }
+
     public PetCommands<Command> getListOfCommands() {
         return commands;
     }
@@ -67,7 +78,8 @@ public abstract class Animal {
     @Override
     public String toString() {
         return "Animal{" +
-                "id=" + id +
+                "number=" + number +
+                ", id=" + id +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", name='" + name + '\'' +
                 ", commands=" + commands +

@@ -1,12 +1,10 @@
 package Registry.Presenter;
 
-import Registry.Model.AnimalAndCommand;
 import Registry.Model.FriendsOfMan.Animals.Animal;
 import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Map;
 
 public interface IModel {
     ArrayList<Animal> getListOfAllPets(String pet) throws SQLException, ClassNotFoundException;

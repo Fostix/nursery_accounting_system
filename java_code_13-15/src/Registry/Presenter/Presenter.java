@@ -61,9 +61,10 @@ public class Presenter {
             viewContract.println("-".repeat(50));
             try {
                 for (Animal a : model.getListOfAllPets(animalType[i])) {
-                    viewContract.print(String.valueOf(a.getId()));
-                    viewContract.print(a.getName());
-                    viewContract.print(a.getDateOfBirth());
+                    viewContract.print(a.getNumber() + "  ");
+                    viewContract.print(a.getId() + "  ");
+                    viewContract.print(a.getName() + "  ");
+                    viewContract.print(a.getDateOfBirth() + "  ");
                     for (int j = 0; j < a.getListOfCommands().getSize(); j++) {
                         viewContract.print(a.getCommandById(j).toString() + ",");
                     }

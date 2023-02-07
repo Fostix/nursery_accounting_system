@@ -41,7 +41,7 @@ public class Model implements IModel {
             idCommand = resultSet.getInt("id_command");
             dateOfBirth = resultSet.getString("date_of_birth").trim();
             name = resultSet.getString("name").trim();
-            animal = creator.createASpecificAnimal(table, id, dateOfBirth, name);
+            animal = creator.createASpecificAnimal(table, idCommand, id, dateOfBirth, name);
             forCommandResultSet = forCommandStatement.executeQuery(
                     "SELECT co.command\n" +
                             "FROM " + table + " a\n" +
@@ -84,17 +84,19 @@ public class Model implements IModel {
     @Override
     public Animal getPetById(String table, int id) throws SQLException, ClassNotFoundException {
         connect();
+        int idCommand = 0;
         String dateOfBirth = null;
         String type = null;
         String name = null;
         Creator creator = Creator.getInstance();
-        resultSet = statement.executeQuery( "SELECT id, date_of_birth, name FROM " + table + " WHERE id = " + id + ";");
+        resultSet = statement.executeQuery( "SELECT id, id_command, date_of_birth, name FROM " + table + " WHERE id = " + id + ";");
         while (resultSet.next()) {
             id = resultSet.getInt("id");
+            idCommand = resultSet.getInt("id_command");
             type = resultSet.getString("type").trim();
             dateOfBirth = resultSet.getString("date_of_birth").trim();
             name = resultSet.getString("name").trim();
-            return creator.createASpecificAnimal(table, id, dateOfBirth, name);
+            return creator.createASpecificAnimal(table, idCommand, id, dateOfBirth, name);
         }
         resultSet.close();
         statement.close();
@@ -106,18 +108,20 @@ public class Model implements IModel {
     public ArrayList<Animal> getPetByDataOfBirth(String table, String dateOfBirth) throws SQLException, ClassNotFoundException {
         connect();
         int id = 0;
+        int idCommand = 0;
         String type = null;
         String name = null;
         Creator creator = Creator.getInstance();
         ArrayList<Animal> animals = new ArrayList<>();
         for (int i = 0; i < animalTables.length; i++) {
-            resultSet = statement.executeQuery( "SELECT id, date_of_birth, name FROM " + animalTables[i] + " WHERE date_of_birth = '"
+            resultSet = statement.executeQuery( "SELECT id, id_command, date_of_birth, name FROM " + animalTables[i] + " WHERE date_of_birth = '"
                     + dateOfBirth + "';");
             while (resultSet.next()) {
                 id = resultSet.getInt("id");
+                idCommand = resultSet.getInt("id_command");
                 dateOfBirth = resultSet.getString("date_of_birth").trim();
                 name = resultSet.getString("name").trim();
-                animals.add(creator.createASpecificAnimal(table, id, dateOfBirth, name));
+                animals.add(creator.createASpecificAnimal(table, idCommand, id, dateOfBirth, name));
             }
         }
         resultSet.close();
