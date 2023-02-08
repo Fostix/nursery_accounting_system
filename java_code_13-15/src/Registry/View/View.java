@@ -9,9 +9,9 @@ public class View implements ViewContract {
     public void showMenu() {
         System.out.println("|  main menu  |");
         System.out.println("1 - show list of all pets");
-        System.out.println("2 - search pet by id");
-        System.out.println("3 - search pet by date of birth");
-        System.out.println("4 - search pet by name");
+        System.out.println("2 - show list of pets");
+        System.out.println("3 - target pet by number");
+        System.out.println("4 - target pet by id");
         System.out.println("5 - add new pet");
     }
 

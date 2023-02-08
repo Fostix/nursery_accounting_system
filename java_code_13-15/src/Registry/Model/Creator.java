@@ -21,18 +21,13 @@ public class Creator {
     }
 
     public Animal createASpecificAnimal(String kindOfAnimal, int number, int id, String dateOfBirth, String name) {
-        switch (kindOfAnimal) {
-            case "cats":
-                return new Cat(number, id, dateOfBirth, name);
-            case "dogs":
-                return new Dog(number, id, dateOfBirth, name);
-            case "hamsters":
-                return new Hamster(number, id, dateOfBirth, name);
-            case "horses":
-                return new Horse(number, id, dateOfBirth, name);
-            case "donkeys":
-                return new Donkey(number, id, dateOfBirth, name);
-        }
-        return null;
+        return switch (kindOfAnimal) {
+            case "cats" -> new Cat(number, id, dateOfBirth, name);
+            case "dogs" -> new Dog(number, id, dateOfBirth, name);
+            case "hamsters" -> new Hamster(number, id, dateOfBirth, name);
+            case "horses" -> new Horse(number, id, dateOfBirth, name);
+            case "donkeys" -> new Donkey(number, id, dateOfBirth, name);
+            default -> null;
+        };
     }
 }
