@@ -1,0 +1,21 @@
+
+e
+java:S1192"GDefine a constant instead of duplicating this literal "UNION
+" 8 times.(—éÛ¤8Öù›Šã0
+p
+java:S1192*"NDefine a constant instead of duplicating this literal "date_of_birth" 3 times.(‡¤–‡ûÿÿÿÿ8û‡Šã0
+h
+java:S1192·"JDefine a constant instead of duplicating this literal "SELECT *
+" 6 times.(°âÈ8û‡Šã0
+e
+java:S11925"HDefine a constant instead of duplicating this literal "command" 3 times.(Æ‰½ˆ8û‡Šã0
+m
+java:S1192)"KDefine a constant instead of duplicating this literal "id_command" 4 times.(ƒİÜ¹úÿÿÿÿ8×ù›Šã0
+„
+java:S1192Œ"fDefine a constant instead of duplicating this literal "SELECT MAX(id_command) AS id_command
+" 5 times.(ëš—õ8×ù›Šã0
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(„ÕİÆ
+U
+java:S6126‹"2Replace this String concatenation with Text block.(ˆ•¢»üÿÿÿÿ8‡ú›Šã0
+U
+java:S6126¶"2Replace this String concatenation with Text block.(Çÿ«ıÿÿÿÿ8±ˆŠã0

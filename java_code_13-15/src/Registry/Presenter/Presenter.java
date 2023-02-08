@@ -1,19 +1,24 @@
 package Registry.Presenter;
 
+import Registry.Counter.Counter;
 import Registry.Model.FriendsOfMan.Animals.Animal;
 import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
 import Registry.Model.FriendsOfMan.PetCommands.PetCommands;
 
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class Presenter {
     private ViewContract viewContract;
     private final IModel model;
-    private static String[] animalType;
+    private static final String[] animalType;
+
+    static {
+        animalType = new String[]{"hamsters", "cats", "dogs", "horses", "donkeys"}; // "camels" table were delete.
+    }
 
     public Presenter(IModel model) {
         this.model = model;
-        animalType = new String[]{"hamsters", "cats", "dogs", "horses", "donkeys"}; // "camels" table were delete.
     }
     public void attachView(ViewContract viewContract) {
         this.viewContract = viewContract;
@@ -25,7 +30,7 @@ public class Presenter {
 
     public void menu() {
         viewContract.showMenu();
-        String num = "3"; //viewContract.enterData();
+        String num = "1"; //viewContract.enterData();
         switch (num) {
             case "1":
                 viewContract.println();
@@ -38,8 +43,8 @@ public class Presenter {
             case "3":
                 int number = targetPet();
                 viewContract.println();
-                infoPet(number); // TODO: need add show command which don't knows
-                petManipulation(number); // menu pet
+                infoPet(number);
+                petManipulation(number);
                 break;
             case "4":
                 viewContract.println();
@@ -56,12 +61,8 @@ public class Presenter {
         viewContract.petManipulation();
         viewContract.print("Enter number: ");
         String num = viewContract.enterData();
-        switch (num) {
-            case "1":
-                teachANewPetCommand(numberPet);
-                break;
-            case "2":
-        }
+        if (Objects.equals(num, "1"))
+            teachANewPetCommand(numberPet);
     }
 
     public void infoPet(int number) {
@@ -92,7 +93,7 @@ public class Presenter {
     }
 
     public void showAllPetsInTable() {
-        viewContract.print("Enter table name:");
+        viewContract.print("Enter table name: ");
         String table = viewContract.enterData();
         try {
             for (Animal animal : model.getListOfAllPets(table)) {
@@ -141,7 +142,7 @@ public class Presenter {
 
     public int targetPet() {
         viewContract.print("Enter number pet: ");
-        return Integer.parseInt(viewContract.enterData()); //TODO: that not number !!!
+        return Integer.parseInt(viewContract.enterData());
     }
 
     public void teachANewPetCommand(int numberPet) {
@@ -189,17 +190,22 @@ public class Presenter {
     }
 
     public void addNewPet() {
-        viewContract.print("Enter type of pet:");
+        viewContract.print("Enter type of pet: ");
         String type = viewContract.enterData() + "s";
         typePetInId(type);
-        viewContract.print("Enter date of birth");
+        viewContract.print("Enter date of birth: ");
         String dateOfBirth = viewContract.enterData();
-        viewContract.print("Enter name");
+        viewContract.print("Enter name: ");
         String data = viewContract.enterData();
-        try {
-            model.addNewPet(type, typePetInId(type), dateOfBirth, data);
+        try (Counter counter = new Counter(model.getLastIdPetKnowsCommand())) {
+//            int lastIdPet = model.getLastIdPetKnowsCommand();
+            //Counter counter = new Counter(lastIdPet);
+            counter.add();
+            model.addNewPet(type,  model.getLastIdPetKnowsCommand(), typePetInId(type), dateOfBirth, data);
         } catch (SQLException | ClassNotFoundException e) {
             viewContract.printlnEr(e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 

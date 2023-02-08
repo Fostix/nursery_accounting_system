@@ -42,7 +42,7 @@ class ModelTest {
         model = new Model();
         try {
             System.out.println(model.getPetById("dogs", 1));
-            assertEquals(new Dog(1, "2012-12-12 15:46:56", "Lucky"), model.getPetById("dogs", 1));
+            assertEquals(new Dog(1, 1, "2012-12-12 15:46:56", "Lucky"), model.getPetById("dogs", 1));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -59,7 +59,7 @@ class ModelTest {
     @Test
     void addNewPet() {
         try {
-            model.addNewPet("dogs", 1, "2015-10-19 07:01:05", "Bahruma");
+            model.addNewPet("dogs", 1,1, "2015-10-19 07:01:05", "Bahruma");
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

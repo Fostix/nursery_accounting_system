@@ -1,7 +1,6 @@
 package Registry.Model.FriendsOfMan.Animals;
 
 import Registry.Model.FriendsOfMan.Animals.Exceptions.IdLessThanOneException;
-import Registry.Model.FriendsOfMan.Animals.Exceptions.IdOutOfException;
 import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
 import Registry.Model.FriendsOfMan.PetCommands.PetCommands;
 
@@ -32,8 +31,6 @@ public abstract class Animal {
     }
 
     public void setId(int id) {
-        if (id > Integer.MAX_VALUE)
-            throw new IdOutOfException();
         if (id < 1)
             throw new IdLessThanOneException();
         this.id = id;
