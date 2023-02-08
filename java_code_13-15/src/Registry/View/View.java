@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class View implements ViewContract {
     @Override
     public void showMenu() {
-        System.out.printf("");
+        System.out.println("|  main menu  |");
         System.out.println("1 - show list of all pets");
         System.out.println("2 - search pet by id");
         System.out.println("3 - search pet by date of birth");
@@ -17,6 +17,7 @@ public class View implements ViewContract {
 
     @Override
     public void petManipulation() {
+        System.out.println("|  pet setting  |");
         System.out.println("1 - teach a new command");
         System.out.println("2 - exit");
     }

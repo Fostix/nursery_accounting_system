@@ -28,20 +28,25 @@ public class Presenter {
         String num = "3"; //viewContract.enterData();
         switch (num) {
             case "1":
+                viewContract.println();
                 showAllPets();
                 break;
             case "2":
+                viewContract.println();
                 showAllPetsInTable();
                 break;
             case "3":
                 int number = targetPet();
-                infoPet(number);
-                petManipulation(number);
+                viewContract.println();
+                infoPet(number); // TODO: need add show command which don't knows
+                petManipulation(number); // menu pet
                 break;
             case "4":
+                viewContract.println();
                 petManipulation(searchPetById());
                 break;
             case "5":
+                viewContract.println();
                 addNewPet();
                 break;
             }
@@ -49,7 +54,7 @@ public class Presenter {
 
     public void petManipulation(int numberPet) {
         viewContract.petManipulation();
-        viewContract.print("Enter command: ");
+        viewContract.print("Enter number: ");
         String num = viewContract.enterData();
         switch (num) {
             case "1":
@@ -150,16 +155,21 @@ public class Presenter {
 
     public void teachANewPetCommand(int numberPet) {
         String numberPetString = String.valueOf(numberPet);
+        int buttonMenu = 1;
         try {
             PetCommands<Command> commands = model.getPetCommands(numberPetString);
             PetCommands<Command> allCommands = model.getAllCommands();
+
+
+
+            viewContract.println("You can teach these/this command(s)");
             for (Object c : allCommands) {
                 if (!commands.contain((Command) c)) {
-                    viewContract.print(c.toString() + ", ");
+                    viewContract.println(buttonMenu++ + " - " + c.toString());
                 }
+                //(Command) ca = c;
             }
             viewContract.println();
-
             model.teachANewPetCommand(numberPetString);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);

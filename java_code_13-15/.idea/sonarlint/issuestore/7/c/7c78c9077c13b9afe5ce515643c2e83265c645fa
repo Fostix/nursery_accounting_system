@@ -1,0 +1,31 @@
+
+^
+java:S1192ž"GDefine a constant instead of duplicating this literal "UNION
+" 8 times.(—éÛ¤
+i
+java:S1192&"NDefine a constant instead of duplicating this literal "date_of_birth" 3 times.(‡¤–‡ûÿÿÿÿ
+a
+java:S1192Á"JDefine a constant instead of duplicating this literal "SELECT *
+" 6 times.(°âÈŽ
+^
+java:S11921"HDefine a constant instead of duplicating this literal "command" 3 times.(Æ‰½ˆ
+f
+java:S1192%"KDefine a constant instead of duplicating this literal "id_command" 4 times.(ƒÝÜ¹úÿÿÿÿ
+}
+java:S1192œ"fDefine a constant instead of duplicating this literal "SELECT MAX(id_command) AS id_command
+" 5 times.(ëš—õ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(­‰øÔ
+M
+java:S2589{"7Remove this expression which always evaluates to "true"(™‹¹Ù
+Q
+java:S6437E"6Revoke and change this password, as it is compromised.(š¤Ì ÿÿÿÿÿ
+Q
+java:S6437L"6Revoke and change this password, as it is compromised.(š¤Ì ÿÿÿÿÿ
+Q
+java:S1854h";Remove this useless assignment to local variable "creator".(Ÿ„÷Ø
+B
+java:S1481h",Remove this unused "creator" local variable.(Ÿ„÷Ø
+N
+java:S6126›"2Replace this String concatenation with Text block.(ˆ•¢»üÿÿÿÿ
+N
+java:S6126À"2Replace this String concatenation with Text block.(ÇŽÿ«ýÿÿÿÿ

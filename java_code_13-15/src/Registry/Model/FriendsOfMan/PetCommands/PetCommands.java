@@ -17,17 +17,17 @@ public class PetCommands<C extends Command> implements Iterable {
         return commands.get(index);
     }
 
-    public void addCommand(Command command) {
+    public void addCommand(C command) {
         if (commands.contains(command))
             throw new AlreadyContainCommandException();
-        this.commands.add((C) command);
+        this.commands.add(command);
     }
 
     public int getSize() {
         return commands.size();
     }
 
-    public void removeCommand(Command command) {
+    public void removeCommand(C command) {
         commands.remove(command);
     }
 
