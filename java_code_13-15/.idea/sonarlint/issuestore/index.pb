@@ -29,21 +29,21 @@ d
 4src/Registry/Model/FriendsOfMan/Animals/Pet/Pet.java,4/4/4429999e9ce9990e4103f7c40c99752811257850
 c
 3src/Registry/Model/FriendsOfMan/Animals/Animal.java,f/8/f89cffbf91748e7808b6625186663bd4f7580a00
+X
+(src/Registry/Presenter/ViewContract.java,1/f/1f8453549050384992c376e709f7e52843fef448
+K
+src/Registry/View/View.java,b/f/bfcfdfe8bf6783d91ad1a4e4cbe387904d9c41fb
 Q
 !src/Registry/Counter/Counter.java,1/c/1c9972ee538e9270870980365d78676e18c5eb63
 M
 src/Registry/Model/Model.java,7/c/7c78c9077c13b9afe5ce515643c2e83265c645fa
-O
-src/Registry/Model/Creator.java,c/e/cebb4d5678ec5bb928839495e4d4c477ad7a8fde
 L
 src/Registry/Model/Pets.java,a/6/a6e5ff2f9cb6d901e8b2dade69cb1b3d5d663141
 P
  src/Registry/Model/Requests.java,8/0/80082fe01f8c581048bd17524ed3b888bee59a24
 R
 "src/Registry/Presenter/IModel.java,2/b/2bce48814d8fd62db970a49e5dd5e061b423dcab
-X
-(src/Registry/Presenter/ViewContract.java,1/f/1f8453549050384992c376e709f7e52843fef448
+O
+src/Registry/Model/Creator.java,c/e/cebb4d5678ec5bb928839495e4d4c477ad7a8fde
 U
 %src/Registry/Presenter/Presenter.java,4/9/498bb1fdf0672c94cfa6d94ee931543792a79319
-K
-src/Registry/View/View.java,b/f/bfcfdfe8bf6783d91ad1a4e4cbe387904d9c41fb

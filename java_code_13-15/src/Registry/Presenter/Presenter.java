@@ -29,32 +29,36 @@ public class Presenter {
     }
 
     public void menu() {
-        viewContract.showMenu();
-        String num = "1"; //viewContract.enterData();
-        switch (num) {
-            case "1":
-                viewContract.println();
-                showAllPets();
-                break;
-            case "2":
-                viewContract.println();
-                showAllPetsInTable();
-                break;
-            case "3":
-                int number = targetPet();
-                viewContract.println();
-                infoPet(number);
-                petManipulation(number);
-                break;
-            case "4":
-                viewContract.println();
-                petManipulation(searchPetById());
-                break;
-            case "5":
-                viewContract.println();
-                addNewPet();
-                break;
+        while (true) {
+            viewContract.showMenu();
+            viewContract.print("Enter number: ");
+            String num = viewContract.enterData();
+            switch (num) {
+                case "1" -> {
+                    viewContract.println();
+                    showAllPets();
+                }
+                case "2" -> {
+                    viewContract.println();
+                    showAllPetsInTable();
+                }
+                case "3" -> {
+                    int number = targetPet();
+                    viewContract.println();
+                    infoPet(number);
+                    petManipulation(number);
+                }
+                case "4" -> {
+                    viewContract.println();
+                    petManipulation(searchPetById());
+                }
+                case "5" -> {
+                    viewContract.println();
+                    addNewPet();
+                }
+                default -> viewContract.printlnEr("Unexpected value: " + num);
             }
+        }
     }
 
     public void petManipulation(int numberPet) {
@@ -70,7 +74,7 @@ public class Presenter {
             Animal animal = model.getPetByIdCommand(number);
             printAnimal(animal);
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            viewContract.println(e.getMessage());
         }
     }
 
@@ -185,7 +189,7 @@ public class Presenter {
             model.teachANewPetCommand(numberPetString, ++indexCommand);
 
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            viewContract.println(e.getMessage());
         }
     }
 
@@ -205,7 +209,7 @@ public class Presenter {
         } catch (SQLException | ClassNotFoundException e) {
             viewContract.printlnEr(e.getMessage());
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            viewContract.println(e.getMessage());
         }
     }
 
