@@ -707,6 +707,7 @@ INSERT INTO young_animals (id_command, id_animal_type, date_of_birth, name, age)
 -- 12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на
 -- прошлую принадлежность к старым таблицам.
 
+-- код страшный но работает!
 CREATE TABLE all_table_join
 SELECT hamsters.id AS id_from_hamsters, hamsters.id_animal_type AS id_animal_type_from_hamsters, hamsters.date_of_birth AS date_of_birth_from_hamsters, hamsters.name AS name_from_hamsters,
 dogs.id AS id_from_from_dogs, dogs.id_animal_type AS id_animal_type_from_dogs, dogs.date_of_birth AS date_of_birth_from_dogs, dogs.name AS name_from_dogs,
