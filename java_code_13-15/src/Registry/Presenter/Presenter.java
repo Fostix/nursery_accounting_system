@@ -2,6 +2,7 @@ package Registry.Presenter;
 
 import Registry.Counter.Counter;
 import Registry.Model.FriendsOfMan.Animals.Animal;
+import Registry.Model.FriendsOfMan.Animals.Exceptions.CountException;
 import Registry.Model.FriendsOfMan.PetCommands.Enums.Command;
 import Registry.Model.FriendsOfMan.PetCommands.PetCommands;
 
@@ -32,7 +33,7 @@ public class Presenter {
         while (true) {
             viewContract.showMenu();
             viewContract.print("Enter number: ");
-            String num = viewContract.enterData();
+            String num = "5";//viewContract.enterData();
             switch (num) {
                 case "1" -> {
                     viewContract.println();
@@ -195,21 +196,18 @@ public class Presenter {
 
     public void addNewPet() {
         viewContract.print("Enter type of pet: ");
-        String type = viewContract.enterData() + "s";
+        String type = "hamsters";//viewContract.enterData() + "s";
         typePetInId(type);
         viewContract.print("Enter date of birth: ");
-        String dateOfBirth = viewContract.enterData();
+        String dateOfBirth = "2012-12-12 15:46:56";//viewContract.enterData();
         viewContract.print("Enter name: ");
-        String data = viewContract.enterData();
-        try (Counter counter = new Counter(model.getLastIdPetKnowsCommand())) {
-//            int lastIdPet = model.getLastIdPetKnowsCommand();
-            //Counter counter = new Counter(lastIdPet);
+        String name = "Vmlyh";//viewContract.enterData();
+        Counter counter = new Counter();
+        try (counter) {
             counter.add();
-            model.addNewPet(type,  model.getLastIdPetKnowsCommand(), typePetInId(type), dateOfBirth, data);
+            model.addNewPet(type,  model.getLastIdPetKnowsCommand(), typePetInId(type), dateOfBirth, name);
         } catch (SQLException | ClassNotFoundException e) {
             viewContract.printlnEr(e.getMessage());
-        } catch (Exception e) {
-            viewContract.println(e.getMessage());
         }
     }
 

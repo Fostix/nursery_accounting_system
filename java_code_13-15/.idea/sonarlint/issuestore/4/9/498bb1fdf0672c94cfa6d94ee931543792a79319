@@ -1,3 +1,8 @@
 
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ì‚¶
-W	java:S125Õ"<This block of commented-out lines of code should be removed.(÷ÇΩƒ¸ˇˇˇˇ
+P	java:S125$"<This block of commented-out lines of code should be removed.(∫–Éw
+W	java:S125«"<This block of commented-out lines of code should be removed.(ã∞›∆ˇˇˇˇˇ
+W	java:S125 "<This block of commented-out lines of code should be removed.(äœÑ˘˙ˇˇˇˇ
+W	java:S125Ã"<This block of commented-out lines of code should be removed.(˛Ê˝ü˛ˇˇˇˇ
+v
+java:S1128"ZRemove this unused import 'Registry.Model.FriendsOfMan.Animals.Exceptions.CountException'.(π∂£z8”›≈è„0

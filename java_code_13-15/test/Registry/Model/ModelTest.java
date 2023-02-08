@@ -1,6 +1,7 @@
 package Registry.Model;
 
 import Registry.Model.FriendsOfMan.Animals.Pet.Dog;
+import Registry.Model.MySQL.Connector.RequestsMySQL;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ class ModelTest {
 
     @BeforeEach
     void setUp() {
-        model = new Model();
+        model = new Model(new RequestsMySQL());
     }
 
     @AfterEach
@@ -24,7 +25,6 @@ class ModelTest {
 
     @Test
     void getListOfAllPets() {
-        model = new Model();
         try {
             System.out.println(model.getListOfAllPets("dogs"));
             assertEquals(" ", model.getListOfAllPets("dogs"));
@@ -39,7 +39,6 @@ class ModelTest {
 
     @Test
     void getPetById() {
-        model = new Model();
         try {
             System.out.println(model.getPetById("dogs", 1));
             assertEquals(new Dog(1, 1, "2012-12-12 15:46:56", "Lucky"), model.getPetById("dogs", 1));
