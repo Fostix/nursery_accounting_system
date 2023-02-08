@@ -33,7 +33,7 @@ public class Presenter {
         while (true) {
             viewContract.showMenu();
             viewContract.print("Enter number: ");
-            String num = "5";//viewContract.enterData();
+            String num = viewContract.enterData();
             switch (num) {
                 case "1" -> {
                     viewContract.println();
@@ -196,12 +196,12 @@ public class Presenter {
 
     public void addNewPet() {
         viewContract.print("Enter type of pet: ");
-        String type = "hamsters";//viewContract.enterData() + "s";
+        String type = viewContract.enterData() + "s";
         typePetInId(type);
         viewContract.print("Enter date of birth: ");
-        String dateOfBirth = "2012-12-12 15:46:56";//viewContract.enterData();
+        String dateOfBirth = viewContract.enterData();
         viewContract.print("Enter name: ");
-        String name = "Vmlyh";//viewContract.enterData();
+        String name = viewContract.enterData();
         Counter counter = new Counter();
         try (counter) {
             counter.add();
