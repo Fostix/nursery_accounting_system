@@ -163,6 +163,12 @@ public class Presenter {
                 allCommands.removeCommand((Command) command);
             }
 
+            if (allCommands.getSize() == 0) {
+                viewContract.println("Oh, We will not be able to teach anything new to your pet, he is too smart!");
+                viewContract.println();
+                return;
+            }
+
             viewContract.println();
             viewContract.print("Which command teach: ");
             int enter = Integer.parseInt(viewContract.enterData());
@@ -174,10 +180,9 @@ public class Presenter {
                 indexCommand++;
             }
 
-            System.out.println(indexCommand + " indexCommand");
-
             viewContract.println();
             model.teachANewPetCommand(numberPetString, ++indexCommand);
+
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
