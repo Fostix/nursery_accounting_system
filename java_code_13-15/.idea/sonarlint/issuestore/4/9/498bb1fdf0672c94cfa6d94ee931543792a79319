@@ -1,11 +1,9 @@
 
 `	java:S112H"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-a	java:S112¯"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112¶"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
 a
 java:S1301;"KReplace this "switch" statement by "if" statements to increase readability.(’ÎÁÄ
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Êíâ¦
-˜
-java:S1186“"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ì¯Ôá
 B
 java:S3010"'Remove this assignment of "animalType".(‡™¹±øÿÿÿÿ
 7	java:S131""Add a default case to this switch.(’ÎÁÄ
@@ -13,7 +11,6 @@ P	java:S125"<This block of commented-out lines of code should be removed.(”‡
 M
 java:S1135)"2Complete the task associated to this TODO comment.(ŒÚ¹§úÿÿÿÿ
 7	java:S131;""Add a default case to this switch.(’ÎÁÄ
-R	java:S125"<This block of commented-out lines of code should be removed.(‡²© 
 H
-java:S1135™"2Complete the task associated to this TODO comment.(¬£šY
-Q	java:S125ª"<This block of commented-out lines of code should be removed.(Á¬²q
+java:S1135"2Complete the task associated to this TODO comment.(¬£šY
+[	java:S106±"9Replace this use of System.out or System.err by a logger.(ãø×Şüÿÿÿÿ8‹ŒÂ€ã0

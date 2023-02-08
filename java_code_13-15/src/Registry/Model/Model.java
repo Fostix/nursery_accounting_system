@@ -54,9 +54,7 @@ public class Model implements IModel {
             }
             animals.add(animal);
         }
-        resultSet.close();
-        statement.close();
-        connection.close();
+        closeAll();
         forCommandResultSet.close();
         forCommandStatement.close();
         forCommandConnection.close();
@@ -91,9 +89,7 @@ public class Model implements IModel {
             dateOfBirth = resultSet.getString("date_of_birth").trim();
             name = resultSet.getString("name").trim();
         }
-        resultSet.close();
-        statement.close();
-        connection.close();
+        closeAll();
         return creator.createASpecificAnimal(table, idCommand, id, dateOfBirth, name);
     }
 
@@ -104,6 +100,7 @@ public class Model implements IModel {
         Creator creator = Creator.getInstance();
         statement.executeUpdate( "INSERT INTO " + table + "(id_command, id_animal_type, date_of_birth, name) VALUE ('"
                 + ++lastPetId + "', " + type + ", '" + dateOfBirth + "', '" + name + "');");
+        closeAll();
     }
 
     @Override
@@ -125,6 +122,7 @@ public class Model implements IModel {
                 commands.addCommand(enumCom);
             }
         }
+        closeAll();
         return commands;
     }
 
@@ -143,9 +141,14 @@ public class Model implements IModel {
     }
 
     @Override
-    public void teachANewPetCommand(String petNumber) throws SQLException, ClassNotFoundException {
+    public void teachANewPetCommand(String petNumber, int command) throws SQLException, ClassNotFoundException { // TODO: number pet need too!
         connect();
-
+        statement.executeUpdate(
+                "INSERT INTO pet_knows_commands (id_pet, id_commands)\n" +
+                        "VALUE\n" +
+                        "(" + petNumber + ", " + command + ");"
+                );
+        closeAll();
         // query witch command don't know.
         // return commands which pet don't know.
     }
@@ -235,13 +238,17 @@ public class Model implements IModel {
         }
         statement.executeUpdate("DROP TABLE all_pets;");
 
-        resultSet.close();
-        statement.close();
-        connection.close();
+        closeAll();
         forCommandResultSet.close();
         forCommandStatement.close();
         forCommandConnection.close();
 
         return animal;
+    }
+
+    private void closeAll() throws SQLException {
+        resultSet.close();
+        statement.close();
+        connection.close();
     }
 }

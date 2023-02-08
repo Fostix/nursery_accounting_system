@@ -1,31 +1,33 @@
 
 ^
-java:S1192"GDefine a constant instead of duplicating this literal "UNION
+java:S1192¡"GDefine a constant instead of duplicating this literal "UNION
 " 8 times.(—éÛ¤
 i
 java:S1192&"NDefine a constant instead of duplicating this literal "date_of_birth" 3 times.(‡¤–‡ûÿÿÿÿ
 a
-java:S1192Á"JDefine a constant instead of duplicating this literal "SELECT *
+java:S1192Ä"JDefine a constant instead of duplicating this literal "SELECT *
 " 6 times.(°âÈ
 ^
 java:S11921"HDefine a constant instead of duplicating this literal "command" 3 times.(Æ‰½ˆ
 f
 java:S1192%"KDefine a constant instead of duplicating this literal "id_command" 4 times.(ƒİÜ¹úÿÿÿÿ
 }
-java:S1192œ"fDefine a constant instead of duplicating this literal "SELECT MAX(id_command) AS id_command
+java:S1192Ÿ"fDefine a constant instead of duplicating this literal "SELECT MAX(id_command) AS id_command
 " 5 times.(ëš—õ
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(­‰øÔ
 M
-java:S2589{"7Remove this expression which always evaluates to "true"(™‹¹Ù
+java:S2589x"7Remove this expression which always evaluates to "true"(™‹¹Ù
 Q
-java:S6437E"6Revoke and change this password, as it is compromised.(š¤Ì ÿÿÿÿÿ
+java:S6437C"6Revoke and change this password, as it is compromised.(š¤Ì ÿÿÿÿÿ
 Q
-java:S6437L"6Revoke and change this password, as it is compromised.(š¤Ì ÿÿÿÿÿ
+java:S6437J"6Revoke and change this password, as it is compromised.(š¤Ì ÿÿÿÿÿ
 Q
-java:S1854h";Remove this useless assignment to local variable "creator".(Ÿ„÷Ø
+java:S1854d";Remove this useless assignment to local variable "creator".(Ÿ„÷Ø
 B
-java:S1481h",Remove this unused "creator" local variable.(Ÿ„÷Ø
+java:S1481d",Remove this unused "creator" local variable.(Ÿ„÷Ø
+I
+java:S1135"2Complete the task associated to this TODO comment.(üµòİ
 N
-java:S6126›"2Replace this String concatenation with Text block.(ˆ•¢»üÿÿÿÿ
+java:S6126"2Replace this String concatenation with Text block.(ˆ•¢»üÿÿÿÿ
 N
-java:S6126À"2Replace this String concatenation with Text block.(Çÿ«ıÿÿÿÿ
+java:S6126Ã"2Replace this String concatenation with Text block.(Çÿ«ıÿÿÿÿ

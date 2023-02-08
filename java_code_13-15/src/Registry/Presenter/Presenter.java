@@ -119,7 +119,6 @@ public class Presenter {
         viewContract.println();
     }
 
-
     public int searchPetById() {
         viewContract.print("enter pet table: ");
         String value = viewContract.enterData();
@@ -140,14 +139,6 @@ public class Presenter {
         return animal.getNumber();
     }
 
-    public void showPetCommands() {
-        //model.showPetCommands();
-    }
-
-    public void searchPetByName() {
-
-    }
-
     public int targetPet() {
         viewContract.print("Enter number pet: ");
         return Integer.parseInt(viewContract.enterData()); //TODO: that not number !!!
@@ -160,17 +151,33 @@ public class Presenter {
             PetCommands<Command> commands = model.getPetCommands(numberPetString);
             PetCommands<Command> allCommands = model.getAllCommands();
 
-
-
-            viewContract.println("You can teach these/this command(s)");
-            for (Object c : allCommands) {
-                if (!commands.contain((Command) c)) {
-                    viewContract.println(buttonMenu++ + " - " + c.toString());
-                }
-                //(Command) ca = c;
-            }
             viewContract.println();
-            model.teachANewPetCommand(numberPetString);
+            viewContract.println("You can teach these/this command(s)");
+            for (Object command : allCommands) {
+                if (!commands.contain((Command) command)) {
+                    viewContract.println(buttonMenu++ + " - " + command.toString());
+                }
+            }
+
+            for (Object command : commands) {
+                allCommands.removeCommand((Command) command);
+            }
+
+            viewContract.println();
+            viewContract.print("Which command teach: ");
+            int enter = Integer.parseInt(viewContract.enterData());
+
+            int indexCommand = 0;
+            Command forFindIndex = allCommands.getById(--enter);
+
+            while (Command.values()[indexCommand] != forFindIndex) {
+                indexCommand++;
+            }
+
+            System.out.println(indexCommand + " indexCommand");
+
+            viewContract.println();
+            model.teachANewPetCommand(numberPetString, ++indexCommand);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
